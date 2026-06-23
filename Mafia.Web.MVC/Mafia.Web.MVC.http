@@ -1,0 +1,6 @@
+@Mafia.Web.MVC_HostAddress = http://localhost:5128
+
+GET {{Mafia.Web.MVC_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

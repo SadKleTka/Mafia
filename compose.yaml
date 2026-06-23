@@ -1,0 +1,29 @@
+﻿services:
+  db:
+    image: postgres:latest
+    container_name: ${DB_CONTAINER_NAME}
+    environment:
+      POSTGRES_USER: ${DB_USER}
+      POSTGRES_PASSWORD: ${DB_PASSWORD}
+      POSTGRES_DB: ${DB_NAME}
+    ports:
+      - "${DB_PORT}:5432"
+  
+  
+  rabbitmq:
+    image: rabbitmq:3-management
+    container_name: ${MESS_CONTAINER_NAME}
+    ports:
+      - "${RABBIT_PORT}:5672"
+      - "${RABBIT_PORT_CLIENT}:15672"
+  
+  
+  redis:
+    image: redis:alpine
+    container_name: ${REDIS_CONTAINER_NAME}
+    restart: unless-stopped
+    ports:
+      - "${REDIS_PORT}:6379"
+    
+    command: redis-server --save 60 1 --loglevel warning
+    
