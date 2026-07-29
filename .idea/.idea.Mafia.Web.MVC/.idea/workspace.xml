@@ -14,7 +14,39 @@
     <configurations />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="74f483ff-44f8-455d-af7b-fdfb4b88903f" name="Changes" comment="" />
+    <list default="true" id="74f483ff-44f8-455d-af7b-fdfb4b88903f" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Mafia.Web.MVC/.idea/dataSources/8d8235cb-c26f-4576-8b2b-165e2cecf640.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Mafia.Web.MVC/.idea/dataSources/8d8235cb-c26f-4576-8b2b-165e2cecf640/storage_v2/_src_/database/mafia.db.AlMf-g.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Mafia.Web.MVC/.idea/dataSources/8d8235cb-c26f-4576-8b2b-165e2cecf640/storage_v2/_src_/database/mafia.db.AlMf-g/schema/information_schema.FNRwLQ.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Mafia.Web.MVC/.idea/dataSources/8d8235cb-c26f-4576-8b2b-165e2cecf640/storage_v2/_src_/database/mafia.db.AlMf-g/schema/pg_catalog.0S1ZNQ.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Mafia.Web.MVC/.idea/dataSources/8d8235cb-c26f-4576-8b2b-165e2cecf640/storage_v2/_src_/database/mafia.db.AlMf-g/schema/public.abK9xQ.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Mafia.Web.MVC/.idea/dataSources/data_sources_history.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Mafia.Web.MVC/.idea/dataSources/data_sources_history.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Mafia.Web.MVC/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Mafia.Web.MVC/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Mafia.Web.MVC/obj/Debug/net10.0/Mafia.Web.MVC.AssemblyInfo.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Mafia.Web.MVC/obj/Debug/net10.0/Mafia.Web.MVC.AssemblyInfo.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Mafia.Web.MVC/obj/Debug/net10.0/Mafia.Web.MVC.AssemblyInfoInputs.cache" beforeDir="false" afterPath="$PROJECT_DIR$/Mafia.Web.MVC/obj/Debug/net10.0/Mafia.Web.MVC.AssemblyInfoInputs.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Mafia.Web.MVC/obj/Debug/net10.0/Mafia.Web.MVC.GeneratedMSBuildEditorConfig.editorconfig" beforeDir="false" afterPath="$PROJECT_DIR$/Mafia.Web.MVC/obj/Debug/net10.0/Mafia.Web.MVC.GeneratedMSBuildEditorConfig.editorconfig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Mafia.Web.MVC/obj/Debug/net10.0/Mafia.Web.MVC.assets.cache" beforeDir="false" afterPath="$PROJECT_DIR$/Mafia.Web.MVC/obj/Debug/net10.0/Mafia.Web.MVC.assets.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Mafia.Web.MVC/obj/Debug/net10.0/Mafia.Web.MVC.csproj.AssemblyReference.cache" beforeDir="false" afterPath="$PROJECT_DIR$/Mafia.Web.MVC/obj/Debug/net10.0/Mafia.Web.MVC.csproj.AssemblyReference.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Mafia.Web.MVC/obj/Mafia.Web.MVC.csproj.nuget.dgspec.json" beforeDir="false" afterPath="$PROJECT_DIR$/Mafia.Web.MVC/obj/Mafia.Web.MVC.csproj.nuget.dgspec.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Mafia.Web.MVC/obj/Mafia.Web.MVC.csproj.nuget.g.props" beforeDir="false" afterPath="$PROJECT_DIR$/Mafia.Web.MVC/obj/Mafia.Web.MVC.csproj.nuget.g.props" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Mafia.Web.MVC/obj/Mafia.Web.MVC.csproj.nuget.g.targets" beforeDir="false" afterPath="$PROJECT_DIR$/Mafia.Web.MVC/obj/Mafia.Web.MVC.csproj.nuget.g.targets" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Mafia.Web.MVC/obj/project.assets.json" beforeDir="false" afterPath="$PROJECT_DIR$/Mafia.Web.MVC/obj/project.assets.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Mafia.Web.MVC/obj/project.nuget.cache" beforeDir="false" afterPath="$PROJECT_DIR$/Mafia.Web.MVC/obj/project.nuget.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Mafia.Web.MVC/obj/project.packagespec.json" beforeDir="false" afterPath="$PROJECT_DIR$/Mafia.Web.MVC/obj/project.packagespec.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Mafia.Web.MVC/obj/rider.project.model.nuget.info" beforeDir="false" afterPath="$PROJECT_DIR$/Mafia.Web.MVC/obj/rider.project.model.nuget.info" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Mafia.Web.MVC/obj/rider.project.restore.info" beforeDir="false" afterPath="$PROJECT_DIR$/Mafia.Web.MVC/obj/rider.project.restore.info" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Models/obj/Debug/net10.0/Models.AssemblyInfo.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Models/obj/Debug/net10.0/Models.AssemblyInfo.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Models/obj/Debug/net10.0/Models.AssemblyInfoInputs.cache" beforeDir="false" afterPath="$PROJECT_DIR$/Models/obj/Debug/net10.0/Models.AssemblyInfoInputs.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Models/obj/Debug/net10.0/Models.GeneratedMSBuildEditorConfig.editorconfig" beforeDir="false" afterPath="$PROJECT_DIR$/Models/obj/Debug/net10.0/Models.GeneratedMSBuildEditorConfig.editorconfig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Models/obj/Debug/net10.0/Models.assets.cache" beforeDir="false" afterPath="$PROJECT_DIR$/Models/obj/Debug/net10.0/Models.assets.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Models/obj/Models.csproj.nuget.dgspec.json" beforeDir="false" afterPath="$PROJECT_DIR$/Models/obj/Models.csproj.nuget.dgspec.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Models/obj/Models.csproj.nuget.g.props" beforeDir="false" afterPath="$PROJECT_DIR$/Models/obj/Models.csproj.nuget.g.props" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Models/obj/project.assets.json" beforeDir="false" afterPath="$PROJECT_DIR$/Models/obj/project.assets.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Models/obj/project.nuget.cache" beforeDir="false" afterPath="$PROJECT_DIR$/Models/obj/project.nuget.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Models/obj/project.packagespec.json" beforeDir="false" afterPath="$PROJECT_DIR$/Models/obj/project.packagespec.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Models/obj/rider.project.model.nuget.info" beforeDir="false" afterPath="$PROJECT_DIR$/Models/obj/rider.project.model.nuget.info" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Models/obj/rider.project.restore.info" beforeDir="false" afterPath="$PROJECT_DIR$/Models/obj/rider.project.restore.info" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -27,10 +59,10 @@
     <commands />
     <urls />
   </component>
-  <component name="ProjectColorInfo"><![CDATA[{
-  "associatedIndex": 2,
-  "fromUser": false
-}]]></component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 2,
+  &quot;fromUser&quot;: false
+}</component>
   <component name="ProjectId" id="3FXkH2FZHRJdvVeogno57Lr7ZiL" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
@@ -43,9 +75,11 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
     "RunOnceActivity.cidr.known.project.marker": "true",
+    "RunOnceActivity.git.unshallow": "true",
     "RunOnceActivity.readMode.enableVisualFormatting": "true",
     "RunOnceActivity.typescript.service.memoryLimit.init": "true",
     "cidr.known.project.marker": "true",
+    "codeWithMe.voiceChat.enabledByDefault": "false",
     "com.intellij.ml.llm.matterhorn.ej.ui.settings.DefaultModelSelectionForGA.v1": "true",
     "git-widget-placeholder": "main",
     "junie.onboarding.icon.badge.shown": "true",
@@ -118,11 +152,17 @@
       <method v="2" />
     </configuration>
     <configuration default="true" type="docker-deploy" factoryName="docker-compose.yml" temporary="true">
-      <deployment type="docker-compose.yml" />
+      <deployment type="docker-compose.yml">
+        <settings />
+      </deployment>
+      <EXTENSION ID="com.jetbrains.rider.docker.debug" isFastModeEnabled="true" isSslEnabled="false" />
       <method v="2" />
     </configuration>
     <configuration default="true" type="docker-deploy" factoryName="dockerfile" temporary="true">
-      <deployment type="dockerfile" />
+      <deployment type="dockerfile">
+        <settings />
+      </deployment>
+      <EXTENSION ID="com.jetbrains.rider.docker.debug" isFastModeEnabled="true" isSslEnabled="false" />
       <method v="2" />
     </configuration>
     <configuration name="compose.yaml: Compose Deployment" type="docker-deploy" factoryName="docker-compose.yml" server-name="Docker">
@@ -143,6 +183,7 @@
       <option name="presentableId" value="Default" />
       <updated>1782228710487</updated>
       <workItem from="1782228713560" duration="1182000" />
+      <workItem from="1785321037240" duration="1264000" />
     </task>
     <servers />
   </component>
