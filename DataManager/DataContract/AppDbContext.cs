@@ -1,7 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Models.Entity;
 
-namespace DataContract;
+namespace DataManager.DataContract;
 
 /// <summary>
 /// Класс для подключения к базе данных и создания Entity сущностей

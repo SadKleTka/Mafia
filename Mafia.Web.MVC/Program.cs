@@ -1,6 +1,8 @@
+using DataManager.DataContract;
+
 var builder = WebApplication.CreateBuilder(args);
 
-var connectionString = Environment.GetEnvironmentVariable("DB_CONNECTION_STRING");
+var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
 builder.Services.AddDataBase(connectionString);
 
 

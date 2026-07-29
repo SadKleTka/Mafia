@@ -1,7 +1,7 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace Models.Entity;
+namespace DomainModel.Models.Entity;
 
 /// <summary>
 /// Модель класса пользователя

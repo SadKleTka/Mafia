@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("DataContract")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+d06ca38e1568d39006262b9e5242034956a1c93b")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+01f78f236fb1e165f353d3ef955d5b64daaa4561")]
 [assembly: System.Reflection.AssemblyProductAttribute("DataContract")]
 [assembly: System.Reflection.AssemblyTitleAttribute("DataContract")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
