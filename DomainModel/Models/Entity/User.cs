@@ -7,12 +7,13 @@ namespace DomainModel.Models.Entity;
 /// <summary>
 /// Модель класса пользователя
 /// </summary>
-[Table("User", Schema = "dbo")]
+[Table("User")]
 public class User
 {
     /// <summary>
     /// Номер пользователя
     /// </summary>
+    [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
     public Guid UserId { get; set; }
     
     /// <summary>

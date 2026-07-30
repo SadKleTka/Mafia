@@ -1,8 +1,8 @@
 ﻿using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
-using Authentication.Models;
 using Authentication.Options;
+using DomainModel.Models.Model;
 using Microsoft.IdentityModel.Tokens;
 
 namespace Security.Authentication.Services;

@@ -11,6 +11,7 @@
     </ItemGroup>
 
     <ItemGroup>
+      <ProjectReference Include="..\..\DomainModel\Models\Models.csproj" />
       <ProjectReference Include="..\..\Enum\Enums\Enums.csproj" />
     </ItemGroup>
 

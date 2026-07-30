@@ -1,4 +1,5 @@
-﻿using Models.DefaultModels;
+﻿using DomainModel.Models.Model;
+using Models.DefaultModels;
 
 namespace Service.Common.User;
 
@@ -7,5 +8,5 @@ namespace Service.Common.User;
 /// </summary>
 public interface IUserService
 {
-    Task<ExecuteResult> Register(string email, string password);
+    Task<ExecuteResult> Register(RegisterRequest request);
 }

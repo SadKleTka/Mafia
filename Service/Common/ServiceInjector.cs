@@ -15,7 +15,8 @@ public static class ServiceInjector
         this IServiceCollection services,
         IConfiguration configuration)
     {
-        var connectionString = configuration.GetSection("ConnectionStrings").Get<string>();
+        var connectionString =
+            configuration.GetConnectionString("DefaultConnection");
         services.AddDataBase(connectionString);
         services.AddAuthenticationModule(configuration);
 

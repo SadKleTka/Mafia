@@ -1,4 +1,4 @@
-﻿using Authentication.Models;
+﻿using DomainModel.Models.Model;
 
 namespace Security.Authentication.Services;
 
