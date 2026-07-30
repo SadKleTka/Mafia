@@ -1,17 +1,21 @@
-# Default ignored files
-/shelf/
+# Временные папки сборки .NET (в любых подпапках)
+[Bb]in/
+[Oo]bj/
+
+# Пользовательские настройки и кэш Rider/VS
+.idea/
+*.user
+*.userosscache
+*.sln.docstates
+
+# Настройки самого Rider, которые вы игнорировали
+.shelf/
 /workspace.xml
-# Rider ignored files
 /projectSettingsUpdater.xml
 /contentModel.xml
 /modules.xml
-/.idea.Mafia.Web.MVC.iml
-# Editor-based HTTP Client requests
-/httpRequests/
-# Ignored default folder with query files
-/queries/
-# Datasource local storage ignored files
-/dataSources/
-/dataSources.local.xml
+/*.iml
+
+# Конфиденциальные данные
 .env
 appsettings.Development.json
