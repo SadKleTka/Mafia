@@ -1074,14 +1074,8 @@
             "framework": "net10.0",
             "targetAlias": "net10.0",
             "projectReferences": {
-              "C:\\Projects\\OnlineBankM\\DataManager\\DataContract\\DataContract.csproj": {
-                "projectPath": "C:\\Projects\\OnlineBankM\\DataManager\\DataContract\\DataContract.csproj"
-              },
               "C:\\Projects\\OnlineBankM\\DomainModel\\Models\\Models.csproj": {
                 "projectPath": "C:\\Projects\\OnlineBankM\\DomainModel\\Models\\Models.csproj"
-              },
-              "C:\\Projects\\OnlineBankM\\Security\\Authentication\\Authentication.csproj": {
-                "projectPath": "C:\\Projects\\OnlineBankM\\Security\\Authentication\\Authentication.csproj"
               },
               "C:\\Projects\\OnlineBankM\\Service\\UserService\\UserService.csproj": {
                 "projectPath": "C:\\Projects\\OnlineBankM\\Service\\UserService\\UserService.csproj"
@@ -1928,8 +1922,14 @@
             "framework": "net10.0",
             "targetAlias": "net10.0",
             "projectReferences": {
+              "C:\\Projects\\OnlineBankM\\DataManager\\DataContract\\DataContract.csproj": {
+                "projectPath": "C:\\Projects\\OnlineBankM\\DataManager\\DataContract\\DataContract.csproj"
+              },
               "C:\\Projects\\OnlineBankM\\DomainModel\\Models\\Models.csproj": {
                 "projectPath": "C:\\Projects\\OnlineBankM\\DomainModel\\Models\\Models.csproj"
+              },
+              "C:\\Projects\\OnlineBankM\\Security\\Authentication\\Authentication.csproj": {
+                "projectPath": "C:\\Projects\\OnlineBankM\\Security\\Authentication\\Authentication.csproj"
               }
             }
           }

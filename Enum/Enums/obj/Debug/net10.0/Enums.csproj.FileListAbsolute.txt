@@ -1,0 +1,12 @@
+C:\Projects\OnlineBankM\Enum\Enums\bin\Debug\net10.0\Enums.deps.json
+C:\Projects\OnlineBankM\Enum\Enums\bin\Debug\net10.0\Enums.dll
+C:\Projects\OnlineBankM\Enum\Enums\bin\Debug\net10.0\Enums.pdb
+C:\Projects\OnlineBankM\Enum\Enums\obj\Debug\net10.0\Enums.GeneratedMSBuildEditorConfig.editorconfig
+C:\Projects\OnlineBankM\Enum\Enums\obj\Debug\net10.0\Enums.AssemblyInfoInputs.cache
+C:\Projects\OnlineBankM\Enum\Enums\obj\Debug\net10.0\Enums.AssemblyInfo.cs
+C:\Projects\OnlineBankM\Enum\Enums\obj\Debug\net10.0\Enums.csproj.CoreCompileInputs.cache
+C:\Projects\OnlineBankM\Enum\Enums\obj\Debug\net10.0\Enums.sourcelink.json
+C:\Projects\OnlineBankM\Enum\Enums\obj\Debug\net10.0\Enums.dll
+C:\Projects\OnlineBankM\Enum\Enums\obj\Debug\net10.0\refint\Enums.dll
+C:\Projects\OnlineBankM\Enum\Enums\obj\Debug\net10.0\Enums.pdb
+C:\Projects\OnlineBankM\Enum\Enums\obj\Debug\net10.0\ref\Enums.dll

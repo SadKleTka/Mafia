@@ -6,7 +6,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.IdentityModel.Tokens;
 
 
-namespace Authentication;
+namespace Security.Authentication;
 
 /// <summary>
 /// Класс добавления аутентификации и авторизации

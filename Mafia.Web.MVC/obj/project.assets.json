@@ -344,7 +344,9 @@
         "type": "project",
         "framework": ".NETCoreApp,Version=v10.0",
         "dependencies": {
+          "Authentication": "1.0.0",
           "BCrypt.Net-Next": "4.2.0",
+          "DataContract": "1.0.0",
           "Models": "1.0.0"
         },
         "compile": {
@@ -799,8 +801,6 @@
   },
   "projectFileDependencyGroups": {
     "net10.0": [
-      "Authentication >= 1.0.0",
-      "DataContract >= 1.0.0",
       "Microsoft.AspNetCore.OpenApi >= 10.0.5",
       "Models >= 1.0.0",
       "Newtonsoft.Json >= 13.0.4",
@@ -840,14 +840,8 @@
           "framework": "net10.0",
           "targetAlias": "net10.0",
           "projectReferences": {
-            "C:\\Projects\\OnlineBankM\\DataManager\\DataContract\\DataContract.csproj": {
-              "projectPath": "C:\\Projects\\OnlineBankM\\DataManager\\DataContract\\DataContract.csproj"
-            },
             "C:\\Projects\\OnlineBankM\\DomainModel\\Models\\Models.csproj": {
               "projectPath": "C:\\Projects\\OnlineBankM\\DomainModel\\Models\\Models.csproj"
-            },
-            "C:\\Projects\\OnlineBankM\\Security\\Authentication\\Authentication.csproj": {
-              "projectPath": "C:\\Projects\\OnlineBankM\\Security\\Authentication\\Authentication.csproj"
             },
             "C:\\Projects\\OnlineBankM\\Service\\UserService\\UserService.csproj": {
               "projectPath": "C:\\Projects\\OnlineBankM\\Service\\UserService\\UserService.csproj"

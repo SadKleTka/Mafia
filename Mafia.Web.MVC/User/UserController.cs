@@ -19,9 +19,9 @@ public class UserController : MafiaOnlineController
 
     public async Task<ActionResult> Register(string email, string password)
     {
-        _logger.LogInformation("User registration started");
-
         var result = await _service.Register(email, password);
+        
+        _logger.LogInformation(result.Message);
         return JsonContent(new { state = result.IsOK, message = result.Message });
     }
 }
