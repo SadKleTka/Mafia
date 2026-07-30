@@ -1,5 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using Enum.Enums;
 
 namespace DomainModel.Models.Entity;
 
@@ -15,16 +16,9 @@ public class User
     public Guid UserId { get; set; }
     
     /// <summary>
-    /// Логин
+    /// Никнейм
     /// </summary>
-    [Required]
-    public string LoginName { get; set; }
-    
-    /// <summary>
-    /// Пароль
-    /// </summary>
-    [Required]
-    public string Password { get; set; }
+    public string Username { get; set; }
     
     /// <summary>
     /// Электронная почта
@@ -33,9 +27,15 @@ public class User
     public string Email { get; set; }
     
     /// <summary>
-    /// Никнейм
+    /// Пароль
     /// </summary>
-    public string Username { get; set; }
+    [Required]
+    public string Password { get; set; }
+    
+    /// <summary>
+    /// Роль
+    /// </summary>
+    public UserRole Role { get; set; }
     
     /// <summary>
     /// Победы
@@ -54,6 +54,16 @@ public class User
     /// </summary>
     [Display(Name = "Процент побед")]
     public float Winrate { get; set; }
+    
+    /// <summary>
+    /// Аватарка
+    /// </summary>
+    public string AvatarUrl { get; set; }
+    
+    /// <summary>
+    /// Статус сети
+    /// </summary>
+    public UserStatus Status { get; set; }
 
     /// <summary>
     /// Строковое представление объекта

@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Projects\\OnlineBankM\\MafiaSecurity\\Authentication\\Authentication.csproj": {}
+    "C:\\Projects\\OnlineBankM\\Security\\Authentication\\Authentication.csproj": {}
   },
   "projects": {
-    "C:\\Projects\\OnlineBankM\\MafiaSecurity\\Authentication\\Authentication.csproj": {
+    "C:\\Projects\\OnlineBankM\\Security\\Authentication\\Authentication.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Projects\\OnlineBankM\\MafiaSecurity\\Authentication\\Authentication.csproj",
+        "projectUniqueName": "C:\\Projects\\OnlineBankM\\Security\\Authentication\\Authentication.csproj",
         "projectName": "Authentication",
-        "projectPath": "C:\\Projects\\OnlineBankM\\MafiaSecurity\\Authentication\\Authentication.csproj",
+        "projectPath": "C:\\Projects\\OnlineBankM\\Security\\Authentication\\Authentication.csproj",
         "packagesPath": "C:\\Users\\aman.kadinov\\.nuget\\packages\\",
-        "outputPath": "C:\\Projects\\OnlineBankM\\MafiaSecurity\\Authentication\\obj\\",
+        "outputPath": "C:\\Projects\\OnlineBankM\\Security\\Authentication\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -51,6 +51,12 @@
         "net10.0": {
           "framework": "net10.0",
           "targetAlias": "net10.0",
+          "dependencies": {
+            "Microsoft.AspNetCore.Authentication.JwtBearer": {
+              "target": "Package",
+              "version": "[10.0.10, )"
+            }
+          },
           "imports": [
             "net461",
             "net462",

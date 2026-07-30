@@ -9,12 +9,14 @@
 
     <ItemGroup>
         <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="10.0.5"/>
+        <PackageReference Include="Newtonsoft.Json" Version="13.0.4" />
     </ItemGroup>
 
     <ItemGroup>
       <ProjectReference Include="..\DataManager\DataContract\DataContract.csproj" />
       <ProjectReference Include="..\DomainModel\Models\Models.csproj" />
       <ProjectReference Include="..\Security\Authentication\Authentication.csproj" />
+      <ProjectReference Include="..\Service\UserService\UserService.csproj" />
     </ItemGroup>
 
 </Project>

@@ -1,5 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
-using Models.Entity;
+﻿using DomainModel.Models.Entity;
+using Microsoft.EntityFrameworkCore;
 
 namespace DataManager.DataContract;
 
