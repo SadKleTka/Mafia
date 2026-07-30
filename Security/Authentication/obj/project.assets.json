@@ -184,6 +184,16 @@
             "related": ".xml"
           }
         }
+      },
+      "Enums/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v10.0",
+        "compile": {
+          "bin/placeholder/Enums.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Enums.dll": {}
+        }
       }
     }
   },
@@ -521,10 +531,16 @@
         "system.identitymodel.tokens.jwt.8.19.2.nupkg.sha512",
         "system.identitymodel.tokens.jwt.nuspec"
       ]
+    },
+    "Enums/1.0.0": {
+      "type": "project",
+      "path": "../../Enum/Enums/Enums.csproj",
+      "msbuildProject": "../../Enum/Enums/Enums.csproj"
     }
   },
   "projectFileDependencyGroups": {
     "net10.0": [
+      "Enums >= 1.0.0",
       "Microsoft.AspNetCore.Authentication.JwtBearer >= 10.0.10"
     ]
   },
@@ -560,7 +576,11 @@
         "net10.0": {
           "framework": "net10.0",
           "targetAlias": "net10.0",
-          "projectReferences": {}
+          "projectReferences": {
+            "C:\\Projects\\OnlineBankM\\Enum\\Enums\\Enums.csproj": {
+              "projectPath": "C:\\Projects\\OnlineBankM\\Enum\\Enums\\Enums.csproj"
+            }
+          }
         }
       },
       "warningProperties": {

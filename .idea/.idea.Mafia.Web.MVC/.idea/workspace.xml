@@ -17,58 +17,35 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="74f483ff-44f8-455d-af7b-fdfb4b88903f" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/DomainModel/Models/Exceptions/AuthenticationException.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Service/UserService/ServiceInjector.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Security/Authentication/Models/TokenRequest.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Security/Authentication/Services/IJwtTokenGenerator.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Security/Authentication/Services/JwtTokenGenerator.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Mafia.Web.MVC/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Mafia.Web.MVC/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DataManager/DataContract/obj/Debug/net10.0/DataContract.AssemblyInfo.cs" beforeDir="false" afterPath="$PROJECT_DIR$/DataManager/DataContract/obj/Debug/net10.0/DataContract.AssemblyInfo.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DataManager/DataContract/obj/Debug/net10.0/DataContract.AssemblyInfoInputs.cache" beforeDir="false" afterPath="$PROJECT_DIR$/DataManager/DataContract/obj/Debug/net10.0/DataContract.AssemblyInfoInputs.cache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DataManager/DataContract/obj/Debug/net10.0/DataContract.csproj.AssemblyReference.cache" beforeDir="false" afterPath="$PROJECT_DIR$/DataManager/DataContract/obj/Debug/net10.0/DataContract.csproj.AssemblyReference.cache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DataManager/DataContract/obj/rider.project.model.nuget.info" beforeDir="false" afterPath="$PROJECT_DIR$/DataManager/DataContract/obj/rider.project.model.nuget.info" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DomainModel/Models/bin/Debug/net10.0/Models.deps.json" beforeDir="false" afterPath="$PROJECT_DIR$/DomainModel/Models/bin/Debug/net10.0/Models.deps.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DomainModel/Models/bin/Debug/net10.0/Models.dll" beforeDir="false" afterPath="$PROJECT_DIR$/DomainModel/Models/bin/Debug/net10.0/Models.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DomainModel/Models/bin/Debug/net10.0/Models.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/DomainModel/Models/bin/Debug/net10.0/Models.pdb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DomainModel/Models/obj/Debug/net10.0/Models.AssemblyInfo.cs" beforeDir="false" afterPath="$PROJECT_DIR$/DomainModel/Models/obj/Debug/net10.0/Models.AssemblyInfo.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DomainModel/Models/obj/Debug/net10.0/Models.AssemblyInfoInputs.cache" beforeDir="false" afterPath="$PROJECT_DIR$/DomainModel/Models/obj/Debug/net10.0/Models.AssemblyInfoInputs.cache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DomainModel/Models/obj/Debug/net10.0/Models.csproj.CoreCompileInputs.cache" beforeDir="false" afterPath="$PROJECT_DIR$/DomainModel/Models/obj/Debug/net10.0/Models.csproj.CoreCompileInputs.cache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DomainModel/Models/obj/Debug/net10.0/Models.csproj.FileListAbsolute.txt" beforeDir="false" afterPath="$PROJECT_DIR$/DomainModel/Models/obj/Debug/net10.0/Models.csproj.FileListAbsolute.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DomainModel/Models/obj/Debug/net10.0/Models.dll" beforeDir="false" afterPath="$PROJECT_DIR$/DomainModel/Models/obj/Debug/net10.0/Models.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DomainModel/Models/obj/Debug/net10.0/Models.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/DomainModel/Models/obj/Debug/net10.0/Models.pdb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DomainModel/Models/obj/Debug/net10.0/Models.sourcelink.json" beforeDir="false" afterPath="$PROJECT_DIR$/DomainModel/Models/obj/Debug/net10.0/Models.sourcelink.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DomainModel/Models/obj/Debug/net10.0/ref/Models.dll" beforeDir="false" afterPath="$PROJECT_DIR$/DomainModel/Models/obj/Debug/net10.0/ref/Models.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DomainModel/Models/obj/Debug/net10.0/refint/Models.dll" beforeDir="false" afterPath="$PROJECT_DIR$/DomainModel/Models/obj/Debug/net10.0/refint/Models.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DomainModel/Models/obj/rider.project.model.nuget.info" beforeDir="false" afterPath="$PROJECT_DIR$/DomainModel/Models/obj/rider.project.model.nuget.info" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Enum/Enums/obj/Debug/net10.0/Enums.AssemblyInfo.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Enum/Enums/obj/Debug/net10.0/Enums.AssemblyInfo.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Enum/Enums/obj/Debug/net10.0/Enums.AssemblyInfoInputs.cache" beforeDir="false" afterPath="$PROJECT_DIR$/Enum/Enums/obj/Debug/net10.0/Enums.AssemblyInfoInputs.cache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Mafia.Web.MVC/Mafia.Web.MVC.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/Mafia.Web.MVC/Mafia.Web.MVC.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Mafia.Web.MVC/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Mafia.Web.MVC/Program.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Mafia.Web.MVC/User/UserController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Mafia.Web.MVC/User/UserController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Enum/Enums/UserRole.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Enum/Enums/UserRole.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Enum/Enums/UserStatus.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Enum/Enums/UserStatus.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Mafia.Web.MVC/appsettings.json" beforeDir="false" afterPath="$PROJECT_DIR$/Mafia.Web.MVC/appsettings.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Mafia.Web.MVC/obj/Debug/net10.0/Mafia.Web.MVC.AssemblyInfo.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Mafia.Web.MVC/obj/Debug/net10.0/Mafia.Web.MVC.AssemblyInfo.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Mafia.Web.MVC/obj/Debug/net10.0/Mafia.Web.MVC.AssemblyInfoInputs.cache" beforeDir="false" afterPath="$PROJECT_DIR$/Mafia.Web.MVC/obj/Debug/net10.0/Mafia.Web.MVC.AssemblyInfoInputs.cache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Mafia.Web.MVC/obj/Debug/net10.0/Mafia.Web.MVC.assets.cache" beforeDir="false" afterPath="$PROJECT_DIR$/Mafia.Web.MVC/obj/Debug/net10.0/Mafia.Web.MVC.assets.cache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Mafia.Web.MVC/obj/Debug/net10.0/Mafia.Web.MVC.csproj.AssemblyReference.cache" beforeDir="false" afterPath="$PROJECT_DIR$/Mafia.Web.MVC/obj/Debug/net10.0/Mafia.Web.MVC.csproj.AssemblyReference.cache" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Mafia.Web.MVC/obj/Mafia.Web.MVC.csproj.nuget.dgspec.json" beforeDir="false" afterPath="$PROJECT_DIR$/Mafia.Web.MVC/obj/Mafia.Web.MVC.csproj.nuget.dgspec.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Mafia.Web.MVC/obj/project.assets.json" beforeDir="false" afterPath="$PROJECT_DIR$/Mafia.Web.MVC/obj/project.assets.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Mafia.Web.MVC/obj/project.nuget.cache" beforeDir="false" afterPath="$PROJECT_DIR$/Mafia.Web.MVC/obj/project.nuget.cache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Mafia.Web.MVC/obj/project.packagespec.json" beforeDir="false" afterPath="$PROJECT_DIR$/Mafia.Web.MVC/obj/project.packagespec.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Mafia.Web.MVC/obj/rider.project.model.nuget.info" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/Mafia.Web.MVC/obj/rider.project.restore.info" beforeDir="false" afterPath="$PROJECT_DIR$/Mafia.Web.MVC/obj/rider.project.restore.info" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Security/Authentication/Authentication.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/Security/Authentication/Authentication.csproj" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Security/Authentication/AuthenticationInjection.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Security/Authentication/AuthenticationInjection.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Security/Authentication/JwtTokenGenerator.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Security/Authentication/obj/Authentication.csproj.nuget.dgspec.json" beforeDir="false" afterPath="$PROJECT_DIR$/Security/Authentication/obj/Authentication.csproj.nuget.dgspec.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Security/Authentication/obj/Debug/net10.0/Authentication.AssemblyInfo.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Security/Authentication/obj/Debug/net10.0/Authentication.AssemblyInfo.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Security/Authentication/obj/Debug/net10.0/Authentication.AssemblyInfoInputs.cache" beforeDir="false" afterPath="$PROJECT_DIR$/Security/Authentication/obj/Debug/net10.0/Authentication.AssemblyInfoInputs.cache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Security/Authentication/obj/rider.project.model.nuget.info" beforeDir="false" afterPath="$PROJECT_DIR$/Security/Authentication/obj/rider.project.model.nuget.info" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Service/UserService/User/UserService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Service/UserService/User/UserService.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Service/UserService/UserService.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/Service/UserService/UserService.csproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Security/Authentication/obj/Debug/net10.0/Authentication.csproj.AssemblyReference.cache" beforeDir="false" afterPath="$PROJECT_DIR$/Security/Authentication/obj/Debug/net10.0/Authentication.csproj.AssemblyReference.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Security/Authentication/obj/project.assets.json" beforeDir="false" afterPath="$PROJECT_DIR$/Security/Authentication/obj/project.assets.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Security/Authentication/obj/project.nuget.cache" beforeDir="false" afterPath="$PROJECT_DIR$/Security/Authentication/obj/project.nuget.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Security/Authentication/obj/project.packagespec.json" beforeDir="false" afterPath="$PROJECT_DIR$/Security/Authentication/obj/project.packagespec.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Security/Authentication/obj/rider.project.restore.info" beforeDir="false" afterPath="$PROJECT_DIR$/Security/Authentication/obj/rider.project.restore.info" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Service/UserService/obj/Debug/net10.0/UserService.AssemblyInfo.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Service/UserService/obj/Debug/net10.0/UserService.AssemblyInfo.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Service/UserService/obj/Debug/net10.0/UserService.AssemblyInfoInputs.cache" beforeDir="false" afterPath="$PROJECT_DIR$/Service/UserService/obj/Debug/net10.0/UserService.AssemblyInfoInputs.cache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Service/UserService/obj/Debug/net10.0/UserService.assets.cache" beforeDir="false" afterPath="$PROJECT_DIR$/Service/UserService/obj/Debug/net10.0/UserService.assets.cache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Service/UserService/obj/Debug/net10.0/UserService.csproj.AssemblyReference.cache" beforeDir="false" afterPath="$PROJECT_DIR$/Service/UserService/obj/Debug/net10.0/UserService.csproj.AssemblyReference.cache" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Service/UserService/obj/UserService.csproj.nuget.dgspec.json" beforeDir="false" afterPath="$PROJECT_DIR$/Service/UserService/obj/UserService.csproj.nuget.dgspec.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Service/UserService/obj/UserService.csproj.nuget.g.props" beforeDir="false" afterPath="$PROJECT_DIR$/Service/UserService/obj/UserService.csproj.nuget.g.props" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Service/UserService/obj/UserService.csproj.nuget.g.targets" beforeDir="false" afterPath="$PROJECT_DIR$/Service/UserService/obj/UserService.csproj.nuget.g.targets" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Service/UserService/obj/project.assets.json" beforeDir="false" afterPath="$PROJECT_DIR$/Service/UserService/obj/project.assets.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Service/UserService/obj/project.nuget.cache" beforeDir="false" afterPath="$PROJECT_DIR$/Service/UserService/obj/project.nuget.cache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Service/UserService/obj/project.packagespec.json" beforeDir="false" afterPath="$PROJECT_DIR$/Service/UserService/obj/project.packagespec.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Service/UserService/obj/rider.project.model.nuget.info" beforeDir="false" afterPath="$PROJECT_DIR$/Service/UserService/obj/rider.project.model.nuget.info" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Service/UserService/obj/rider.project.restore.info" beforeDir="false" afterPath="$PROJECT_DIR$/Service/UserService/obj/rider.project.restore.info" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -92,10 +69,11 @@
     <setting file="file://$PROJECT_DIR$/Mafia.Web.MVC/MafiaOnlineController.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Mafia.Web.MVC/User/UserController.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Security/Authentication/AuthenticationInjection.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Security/Authentication/JwtTokenGenerator.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Security/Authentication/Models/LoginRequest.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Security/Authentication/Models/RegisterRequest.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Security/Authentication/Models/TokenRequest.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Security/Authentication/Options/JwtOptions.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Security/Authentication/Services/IJwtTokenGenerator.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Service/UserService/ServiceInjector.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Service/UserService/User/UserService.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/0e00603c17f14f238ce4b4a25546f43d2b2938/cc/cf9a2ad9/DbContext.cs" root0="SKIP_HIGHLIGHTING" />
@@ -106,61 +84,61 @@
   </component>
   <component name="NextEditCompletionFeaturesState">
     <decayedCancelled>
-      <entry key="MS100" value="1.4710200447689852" />
-      <entry key="MS500" value="2.620918359753766" />
-      <entry key="S2" value="6.113191302972021" />
-      <entry key="S5" value="9.09293531484624" />
-      <entry key="S10" value="11.264086439013125" />
-      <entry key="S30" value="14.70832091347605" />
-      <entry key="S60" value="16.426934175011553" />
-      <entry key="M2" value="17.62319459347946" />
-      <entry key="M5" value="21.920314764150334" />
-      <entry key="M10" value="36.45460213561133" />
-      <entry key="M15" value="51.705799601425944" />
-      <entry key="M30" value="90.57544630218311" />
-      <entry key="H1" value="166.23703783770782" />
-      <entry key="H2" value="308.21344997474387" />
-      <entry key="H4" value="480.37012080558924" />
-      <entry key="D1" value="749.0453351558409" />
-      <entry key="W1" value="813.5723740967733" />
+      <entry key="MS100" value="5.603290449251504E-24" />
+      <entry key="MS500" value="2.2371166338946685E-5" />
+      <entry key="S2" value="0.06879071768305939" />
+      <entry key="S5" value="0.365348651225415" />
+      <entry key="S10" value="0.8733265697070461" />
+      <entry key="S30" value="3.534326942198803" />
+      <entry key="S60" value="7.006929374680678" />
+      <entry key="M2" value="13.370706674912636" />
+      <entry key="M5" value="33.74626437477764" />
+      <entry key="M10" value="60.37358457026625" />
+      <entry key="M15" value="80.21975947127484" />
+      <entry key="M30" value="132.77913031084796" />
+      <entry key="H1" value="227.87740078518837" />
+      <entry key="H2" value="391.0236559380752" />
+      <entry key="H4" value="599.5773643324549" />
+      <entry key="D1" value="956.7222697791838" />
+      <entry key="W1" value="1047.6959562441311" />
     </decayedCancelled>
     <decayedSelected>
-      <entry key="MS100" value="2.7268857638082824E-66" />
-      <entry key="MS500" value="7.827043054998053E-14" />
-      <entry key="S2" value="8.640901054295819E-4" />
-      <entry key="S5" value="0.1365534041771822" />
-      <entry key="S10" value="0.8261489311891698" />
-      <entry key="S30" value="3.2735027400223284" />
-      <entry key="S60" value="4.979975656057577" />
-      <entry key="M2" value="6.267162029455593" />
-      <entry key="M5" value="7.568191777560666" />
-      <entry key="M10" value="9.577965320340601" />
-      <entry key="M15" value="11.516521480396511" />
-      <entry key="M30" value="15.820454932392785" />
-      <entry key="H1" value="22.441927391324434" />
-      <entry key="H2" value="32.38888526804728" />
-      <entry key="H4" value="42.90389169728332" />
-      <entry key="D1" value="57.929889866668915" />
-      <entry key="W1" value="61.39142918092656" />
+      <entry key="MS100" value="1.0" />
+      <entry key="MS500" value="1.0002129149768455" />
+      <entry key="S2" value="1.1619741291117731" />
+      <entry key="S5" value="1.8894718982935625" />
+      <entry key="S10" value="2.7958251220827455" />
+      <entry key="S30" value="4.188811315406473" />
+      <entry key="S60" value="4.897499987203405" />
+      <entry key="M2" value="5.612623715258862" />
+      <entry key="M5" value="8.30629079066939" />
+      <entry key="M10" value="12.540808144224012" />
+      <entry key="M15" value="15.572718473318453" />
+      <entry key="M30" value="22.30779275260025" />
+      <entry key="H1" value="32.30877683076393" />
+      <entry key="H2" value="46.126698073371806" />
+      <entry key="H4" value="61.01247540906116" />
+      <entry key="D1" value="83.60331763262386" />
+      <entry key="W1" value="89.03623540893025" />
     </decayedSelected>
     <decayedShown>
-      <entry key="MS100" value="1.3574155201522207" />
-      <entry key="MS500" value="2.576528555978421" />
-      <entry key="S2" value="6.063818332869278" />
-      <entry key="S5" value="9.151860813519606" />
-      <entry key="S10" value="11.948999672350313" />
-      <entry key="S30" value="17.793496665574924" />
-      <entry key="S60" value="21.25439995621888" />
-      <entry key="M2" value="23.79044644171985" />
-      <entry key="M5" value="29.434339225463848" />
-      <entry key="M10" value="45.98826143257653" />
-      <entry key="M15" value="63.180998105530776" />
-      <entry key="M30" value="106.36207345392597" />
-      <entry key="H1" value="188.65185885875945" />
-      <entry key="H2" value="340.5803268103449" />
-      <entry key="H4" value="523.2581018694235" />
-      <entry key="D1" value="806.9713216216538" />
-      <entry key="W1" value="874.9632030160988" />
+      <entry key="MS100" value="6.032590918915463E-17" />
+      <entry key="MS500" value="6.014403687401789E-4" />
+      <entry key="S2" value="0.29232769441707723" />
+      <entry key="S5" value="1.448261658035423" />
+      <entry key="S10" value="3.0179184755712596" />
+      <entry key="S30" value="7.350624390767408" />
+      <entry key="S60" value="11.6670169617448" />
+      <entry key="M2" value="18.826016546247025" />
+      <entry key="M5" value="41.94339184087096" />
+      <entry key="M10" value="72.83081163765827" />
+      <entry key="M15" value="95.72263692812274" />
+      <entry key="M30" value="155.03387983573228" />
+      <entry key="H1" value="260.14469660542653" />
+      <entry key="H2" value="437.11847715638305" />
+      <entry key="H4" value="660.5674030916354" />
+      <entry key="D1" value="1040.3200836304768" />
+      <entry key="W1" value="1136.7313424599674" />
     </decayedShown>
   </component>
   <component name="ProblemsViewState">
@@ -337,7 +315,7 @@
       <workItem from="1785322312011" duration="3793000" />
       <workItem from="1785382078293" duration="11648000" />
       <workItem from="1785401012630" duration="222000" />
-      <workItem from="1785401270294" duration="1517000" />
+      <workItem from="1785401270294" duration="4381000" />
     </task>
     <servers />
   </component>

@@ -4,7 +4,7 @@ using Models.DefaultModels;
 using Models.Exceptions;
 using BCryptNet = BCrypt.Net.BCrypt;
 
-namespace Service.UserService.User;
+namespace Service.Common.User;
 
 /// <summary>
 /// Сервис по работе с пользователями

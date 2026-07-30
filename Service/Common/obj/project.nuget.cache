@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "pclIcSn5fZE=",
+  "dgSpecHash": "iXYMijjBRL8=",
   "success": true,
-  "projectFilePath": "C:\\Projects\\OnlineBankM\\Service\\UserService\\UserService.csproj",
+  "projectFilePath": "C:\\Projects\\OnlineBankM\\Service\\Common\\Common.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\aman.kadinov\\.nuget\\packages\\bcrypt.net-next\\4.2.0\\bcrypt.net-next.4.2.0.nupkg.sha512",
     "C:\\Users\\aman.kadinov\\.nuget\\packages\\microsoft.aspnetcore.authentication.jwtbearer\\10.0.10\\microsoft.aspnetcore.authentication.jwtbearer.10.0.10.nupkg.sha512",

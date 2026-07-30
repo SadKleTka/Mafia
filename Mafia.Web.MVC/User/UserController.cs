@@ -1,5 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using Service.UserService.User;
+using Service.Common.User;
 
 namespace Mafia.Web.MVC.User;
 

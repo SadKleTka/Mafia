@@ -2,9 +2,13 @@
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Security.Authentication;
+using Service.Common.User;
 
-namespace UserService;
+namespace Service.Common.ServiceInjector;
 
+/// <summary>
+/// Инжектор всего сервиса в билд проекта
+/// </summary>
 public static class ServiceInjector
 {
     public static IServiceCollection AddTheSystem(
@@ -14,6 +18,8 @@ public static class ServiceInjector
         var connectionString = configuration.GetSection("ConnectionStrings").Get<string>();
         services.AddDataBase(connectionString);
         services.AddAuthenticationModule(configuration);
+
+        services.AddScoped<IUserService, UserService>();
         
         return services;
     }

@@ -1,4 +1,4 @@
-using UserService;
+using Service.Common.ServiceInjector;
 
 var builder = WebApplication.CreateBuilder(args);
 

@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.IdentityModel.Tokens;
+using Security.Authentication.Services;
 
 
 namespace Security.Authentication;
@@ -48,6 +49,7 @@ public static class AuthenticationInjection
             });
 
         services.AddAuthorization();
+        services.AddSingleton<IJwtTokenGenerator, JwtTokenGenerator>();
 
         return services;
     }

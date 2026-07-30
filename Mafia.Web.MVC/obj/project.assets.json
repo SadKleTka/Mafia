@@ -293,6 +293,7 @@
         "type": "project",
         "framework": ".NETCoreApp,Version=v10.0",
         "dependencies": {
+          "Enums": "1.0.0",
           "Microsoft.AspNetCore.Authentication.JwtBearer": "10.0.10"
         },
         "compile": {
@@ -300,6 +301,22 @@
         },
         "runtime": {
           "bin/placeholder/Authentication.dll": {}
+        }
+      },
+      "Common/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v10.0",
+        "dependencies": {
+          "Authentication": "1.0.0",
+          "BCrypt.Net-Next": "4.2.0",
+          "DataContract": "1.0.0",
+          "Models": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/Common.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Common.dll": {}
         }
       },
       "DataContract/1.0.0": {
@@ -338,22 +355,6 @@
         },
         "runtime": {
           "bin/placeholder/Models.dll": {}
-        }
-      },
-      "UserService/1.0.0": {
-        "type": "project",
-        "framework": ".NETCoreApp,Version=v10.0",
-        "dependencies": {
-          "Authentication": "1.0.0",
-          "BCrypt.Net-Next": "4.2.0",
-          "DataContract": "1.0.0",
-          "Models": "1.0.0"
-        },
-        "compile": {
-          "bin/placeholder/UserService.dll": {}
-        },
-        "runtime": {
-          "bin/placeholder/UserService.dll": {}
         }
       }
     }
@@ -778,6 +779,11 @@
       "path": "../Security/Authentication/Authentication.csproj",
       "msbuildProject": "../Security/Authentication/Authentication.csproj"
     },
+    "Common/1.0.0": {
+      "type": "project",
+      "path": "../Service/Common/Common.csproj",
+      "msbuildProject": "../Service/Common/Common.csproj"
+    },
     "DataContract/1.0.0": {
       "type": "project",
       "path": "../DataManager/DataContract/DataContract.csproj",
@@ -792,19 +798,14 @@
       "type": "project",
       "path": "../DomainModel/Models/Models.csproj",
       "msbuildProject": "../DomainModel/Models/Models.csproj"
-    },
-    "UserService/1.0.0": {
-      "type": "project",
-      "path": "../Service/UserService/UserService.csproj",
-      "msbuildProject": "../Service/UserService/UserService.csproj"
     }
   },
   "projectFileDependencyGroups": {
     "net10.0": [
+      "Common >= 1.0.0",
       "Microsoft.AspNetCore.OpenApi >= 10.0.5",
       "Models >= 1.0.0",
-      "Newtonsoft.Json >= 13.0.4",
-      "UserService >= 1.0.0"
+      "Newtonsoft.Json >= 13.0.4"
     ]
   },
   "packageFolders": {
@@ -843,8 +844,8 @@
             "C:\\Projects\\OnlineBankM\\DomainModel\\Models\\Models.csproj": {
               "projectPath": "C:\\Projects\\OnlineBankM\\DomainModel\\Models\\Models.csproj"
             },
-            "C:\\Projects\\OnlineBankM\\Service\\UserService\\UserService.csproj": {
-              "projectPath": "C:\\Projects\\OnlineBankM\\Service\\UserService\\UserService.csproj"
+            "C:\\Projects\\OnlineBankM\\Service\\Common\\Common.csproj": {
+              "projectPath": "C:\\Projects\\OnlineBankM\\Service\\Common\\Common.csproj"
             }
           }
         }

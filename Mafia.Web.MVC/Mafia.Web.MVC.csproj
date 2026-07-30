@@ -14,7 +14,7 @@
 
     <ItemGroup>
       <ProjectReference Include="..\DomainModel\Models\Models.csproj" />
-      <ProjectReference Include="..\Service\UserService\UserService.csproj" />
+      <ProjectReference Include="..\Service\Common\Common.csproj" />
     </ItemGroup>
 
 </Project>

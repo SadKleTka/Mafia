@@ -24,7 +24,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Enums", "Enum\Enums\Enums.c
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Service", "Service", "{E2E008E4-56BF-46B3-A15C-CAF1027546FF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UserService", "Service\UserService\UserService.csproj", "{E4213AC8-4E73-400F-A6C4-AB3C91BAB3C4}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Common", "Service\Common\Common.csproj", "{E4213AC8-4E73-400F-A6C4-AB3C91BAB3C4}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
