@@ -1,8 +1,10 @@
 ﻿using DataManager.DataContract;
+using Manager.ServiceManager;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Security.Authentication;
 using Service.Common.Auth;
+using Service.Common.Lobby;
 
 namespace Service.Common.ServiceInjector;
 
@@ -20,7 +22,10 @@ public static class ServiceInjector
         services.AddDataBase(connectionString);
         services.AddAuthenticationModule(configuration);
 
+        services.AddManager();
+        
         services.AddScoped<IAuthService, AuthService>();
+        services.AddScoped<ILobbyService, LobbyService>();
         
         return services;
     }

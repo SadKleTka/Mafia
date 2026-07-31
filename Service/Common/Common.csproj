@@ -18,6 +18,7 @@
     <ItemGroup>
       <ProjectReference Include="..\..\DataManager\DataContract\DataContract.csproj" />
       <ProjectReference Include="..\..\DomainModel\Models\Models.csproj" />
+      <ProjectReference Include="..\..\Manager\ServiceManager\ServiceManager.csproj" />
       <ProjectReference Include="..\..\Security\Authentication\Authentication.csproj" />
     </ItemGroup>
 

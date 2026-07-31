@@ -1,4 +1,5 @@
 using System.Text;
+using Mafia.Web.MVC.GameHub;
 using Mafia.Web.MVC.MiddleWare;
 using Service.Common.ServiceInjector;
 Console.OutputEncoding = Encoding.UTF8;
@@ -11,6 +12,7 @@ builder.Services.AddTheSystem(builder.Configuration);
 
 var app = builder.Build();
 
+app.MapHub<MafiaHub>("/hub/lobby");
 app.UseMiddleware<ExceptionHandler>();
 app.MapControllers();
 app.Run();

@@ -14,7 +14,7 @@ public enum ExecuteState
     /// </summary>
     Error,
     /// <summary>
-    /// Заблокировано
+    /// Созданно
     /// </summary>
-    Blocked
+    Created
 }

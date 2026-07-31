@@ -12,6 +12,8 @@ public class AppDbContext : Microsoft.EntityFrameworkCore.DbContext
         : base(options) {}
     
     public DbSet<User> Users { get; set; }
+    
+    public DbSet<Lobby> Lobbies { get; set; }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
@@ -20,6 +22,10 @@ public class AppDbContext : Microsoft.EntityFrameworkCore.DbContext
             .IsUnique();
         modelBuilder.Entity<User>()
             .HasIndex(e => e.Email)
+            .IsUnique();
+        
+        modelBuilder.Entity<Lobby>()
+            .HasIndex(e => e.Name)
             .IsUnique();
     }
 }
