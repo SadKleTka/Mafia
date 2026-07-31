@@ -7,6 +7,15 @@ namespace Models.DefaultModels;
 /// </summary>
 public class ExecuteResult
 {
+    public ExecuteResult(string message, ExecuteState state, string code)
+    {
+        Message = message;
+        State = state;
+        MessageCode = code;
+    }
+    public ExecuteResult()
+    {}
+    
     /// <summary>
     /// Статус выполнения метода на сервисе
     /// </summary>

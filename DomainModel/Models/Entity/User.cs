@@ -1,5 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Runtime.Serialization;
 using Enum.Enums;
 
 namespace DomainModel.Models.Entity;
@@ -13,12 +14,14 @@ public class User
     /// <summary>
     /// Номер пользователя
     /// </summary>
+    [Key]
     [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
     public Guid UserId { get; set; }
     
     /// <summary>
     /// Никнейм
     /// </summary>
+    [Required]
     public string Username { get; set; }
     
     /// <summary>
@@ -64,6 +67,8 @@ public class User
     /// <summary>
     /// Статус сети
     /// </summary>
+    [NotMapped]
+    [IgnoreDataMember]
     public UserStatus Status { get; set; }
 
     /// <summary>

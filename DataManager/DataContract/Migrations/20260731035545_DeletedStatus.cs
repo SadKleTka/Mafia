@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace DbContext.Migrations
 {
     /// <inheritdoc />
-    public partial class FixedUser : Migration
+    public partial class DeletedStatus : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -23,13 +23,24 @@ namespace DbContext.Migrations
                     Wins = table.Column<int>(type: "integer", nullable: false),
                     Losses = table.Column<int>(type: "integer", nullable: false),
                     Winrate = table.Column<float>(type: "real", nullable: false),
-                    AvatarUrl = table.Column<string>(type: "text", nullable: false),
-                    Status = table.Column<int>(type: "integer", nullable: false)
+                    AvatarUrl = table.Column<string>(type: "text", nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_User", x => x.UserId);
                 });
+
+            migrationBuilder.CreateIndex(
+                name: "IX_User_Email",
+                table: "User",
+                column: "Email",
+                unique: true);
+
+            migrationBuilder.CreateIndex(
+                name: "IX_User_Username",
+                table: "User",
+                column: "Username",
+                unique: true);
         }
 
         /// <inheritdoc />

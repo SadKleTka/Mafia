@@ -1,4 +1,8 @@
+using System.Text;
+using Mafia.Web.MVC.MiddleWare;
 using Service.Common.ServiceInjector;
+Console.OutputEncoding = Encoding.UTF8;
+Console.InputEncoding = Encoding.UTF8;
 
 var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllers();
@@ -7,5 +11,6 @@ builder.Services.AddTheSystem(builder.Configuration);
 
 var app = builder.Build();
 
+app.UseMiddleware<ExceptionHandler>();
 app.MapControllers();
 app.Run();

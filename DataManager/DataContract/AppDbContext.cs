@@ -15,5 +15,11 @@ public class AppDbContext : Microsoft.EntityFrameworkCore.DbContext
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
+        modelBuilder.Entity<User>()
+            .HasIndex(e => e.Username)
+            .IsUnique();
+        modelBuilder.Entity<User>()
+            .HasIndex(e => e.Email)
+            .IsUnique();
     }
 }

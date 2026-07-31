@@ -2,7 +2,7 @@
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Security.Authentication;
-using Service.Common.User;
+using Service.Common.Auth;
 
 namespace Service.Common.ServiceInjector;
 
@@ -20,7 +20,7 @@ public static class ServiceInjector
         services.AddDataBase(connectionString);
         services.AddAuthenticationModule(configuration);
 
-        services.AddScoped<IUserService, UserService>();
+        services.AddScoped<IAuthService, AuthService>();
         
         return services;
     }
