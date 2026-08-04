@@ -36,5 +36,20 @@ public class ExecuteResult
     /// </summary>
     public bool IsOK => State == ExecuteState.OK;
     
+    /// <summary>
+    /// State == ExecuteState.Created
+    /// </summary>
+    public bool IsCreated => State == ExecuteState.Created;
+    
+    /// <summary>
+    /// State == ExecuteState.Deleted
+    /// </summary>
+    public bool IsDeleted => State == ExecuteState.Deleted;
+    
+    /// <summary>
+    /// State == ExecuteState.Error
+    /// </summary>
+    public bool IsError => State == ExecuteState.Error;
+    
 
 }

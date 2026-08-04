@@ -2,6 +2,7 @@
 using Enum.Enums;
 using Manager.ServiceManager.Lobby;
 using Microsoft.AspNetCore.SignalR;
+using Microsoft.EntityFrameworkCore;
 using Models.DefaultModels;
 
 namespace Service.Common.Lobby;
@@ -36,11 +37,14 @@ public class LobbyService : ILobbyService
         };
 
         var result = _cache.JoinToLobby(lobbyName, connectionId, userId);
-        if (!result.IsOK)
+        if (result.IsError)
             return result;
-        
-        _context.Lobbies.Add(newLobby);
-        await _context.SaveChangesAsync();
+
+        if (result.IsCreated)
+        {
+            _context.Lobbies.Add(newLobby);
+            await _context.SaveChangesAsync();
+        }
 
         return result;
     }
@@ -54,11 +58,25 @@ public class LobbyService : ILobbyService
     /// <returns></returns>
     public async Task<ExecuteResult> LeaveLobby(string lobbyName, string connectionId, string userId)
     {
-        return new ExecuteResult
+        if (string.IsNullOrEmpty(lobbyName) || string.IsNullOrEmpty(connectionId) || string.IsNullOrEmpty(userId))
+            return new ExecuteResult { State = ExecuteState.Error, Message = "Поля не могут быть пустыми", MessageCode = "409" };
+        
+        var result = _cache.LeaveFromLobby(lobbyName, connectionId, userId);
+        if (!result.IsError)
+            return result;
+
+        if (result.IsDeleted)
         {
-            State = ExecuteState.OK,
-            Message = "заглушка",
-            MessageCode = "200"
-        };
+            var lobby = await _context.Lobbies.FirstOrDefaultAsync(x => x.Name == lobbyName);
+            _context.Lobbies.Remove(lobby);
+            await _context.SaveChangesAsync();
+        }
+
+        return result;
+    }
+    
+    public IReadOnlyDictionary<string, List<string>> GetCachedUsers()
+    {
+        return _cache.GetCachedUsers();
     }
 }

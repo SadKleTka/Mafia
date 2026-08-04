@@ -11,6 +11,14 @@ public class LobbyCache
 { 
     private readonly ConcurrentDictionary<string, ConcurrentDictionary<string, string>> _lobbyUsers = new();
 
+    public IReadOnlyDictionary<string, List<string>> GetCachedUsers()
+    {
+        return _lobbyUsers.ToDictionary(
+            kvp => kvp.Key,
+            kvp => kvp.Value.Values.ToList()
+        );
+    }
+    
     /// <summary>
     /// Кэшировать лобби
     /// </summary>
@@ -59,15 +67,18 @@ public class LobbyCache
     /// <returns></returns>
     public ExecuteResult LeaveFromLobby(string lobbyName, string connectionId, string userId)
     {
+        var state = ExecuteState.OK;
         if (_lobbyUsers.TryGetValue(lobbyName, out var users))
         {
             if (users.Values.Contains(userId))
             {
                 users.TryRemove(connectionId, out _);
-                RemoveLobby(lobbyName);
+                if (RemoveLobby(lobbyName))
+                    state = ExecuteState.Deleted;
+                    
                 return new ExecuteResult
                 {
-                    State = ExecuteState.OK,
+                    State = state,
                     Message = "Вы вышли из лобби",
                     MessageCode = "200"
                 };
@@ -81,14 +92,21 @@ public class LobbyCache
         };
     }
 
-    public void RemoveLobby(string lobbyName)
+    /// <summary>
+    /// Удаляет запись о лобби из кэша
+    /// </summary>
+    /// <param name="lobbyName">Название лобби</param>
+    /// <returns></returns>
+    private bool RemoveLobby(string lobbyName)
     {
         if (_lobbyUsers.TryGetValue(lobbyName, out var users))
         {
             if (users.IsEmpty)
             {
                 _lobbyUsers.TryRemove(lobbyName, out _);
+                return true;
             }
         }
+        return false;
     }
 }

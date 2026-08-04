@@ -6,7 +6,7 @@ using Service.Common.Lobby;
 namespace Mafia.Web.MVC.GameHub;
 
 /// <summary>
-/// Хаб для общение с пользователем в реальном времени
+/// Хаб для общения с пользователем в реальном времени
 /// </summary>
 [Authorize]
 public class MafiaHub : Hub
@@ -14,10 +14,16 @@ public class MafiaHub : Hub
     private readonly ILobbyService _lobby;
     private readonly AppLogger _logger;
     
-    public MafiaHub(ILobbyService lobby, AppLogger logger)
+    public MafiaHub(ILobbyService lobby, ILoggerFactory loggerFactory)
     {
         _lobby = lobby;
-        _logger = logger;
+        var baseLogger = loggerFactory.CreateLogger(GetType());
+        _logger = new AppLogger(baseLogger);
+    }
+    
+    public IReadOnlyDictionary<string, List<string>> GetActiveLobbies()
+    {
+        return _lobby.GetCachedUsers();
     }
 
     /// <summary>
@@ -32,11 +38,31 @@ public class MafiaHub : Hub
         
         var result = await _lobby.JoinLobby(lobbyName, connectionId, userId);
 
-        if (result.IsOK)
+        if (result.IsOK || result.IsCreated)
         {
             await Groups.AddToGroupAsync(connectionId, lobbyName);
         }
         _logger.Log("Вызван сервис присоединения к лобби", result.State);
+        return result;
+    }
+
+    /// <summary>
+    /// Выход из лобби
+    /// </summary>
+    /// <param name="lobbyName"></param>
+    /// <returns></returns>
+    public async Task<ExecuteResult> LeaveLobby(string lobbyName)
+    {
+        var connectionId = Context.ConnectionId;
+        var userId = Context.UserIdentifier;
+
+        var result = await _lobby.LeaveLobby(lobbyName, connectionId, userId);
+
+        if (result.IsOK || result.IsDeleted)
+        {
+            await Groups.RemoveFromGroupAsync(connectionId, lobbyName);
+        }
+        _logger.Log("Вызван сервис выхода из лобби", result.State);
         return result;
     }
     

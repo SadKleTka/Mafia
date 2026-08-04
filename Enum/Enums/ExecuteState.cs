@@ -16,5 +16,9 @@ public enum ExecuteState
     /// <summary>
     /// Созданно
     /// </summary>
-    Created
+    Created,
+    /// <summary>
+    /// Удаленно
+    /// </summary>
+    Deleted
 }
