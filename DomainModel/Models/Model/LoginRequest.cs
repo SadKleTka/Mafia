@@ -1,6 +1,4 @@
-﻿using System.Diagnostics.CodeAnalysis;
-
-namespace DomainModel.Models.Model;
+﻿namespace DomainModel.Models.Model;
 
 /// <summary>
 /// Модель для логина пользователя
