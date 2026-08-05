@@ -1,7 +1,6 @@
 ﻿using DataManager.DataContract;
 using Enum.Enums;
 using Manager.ServiceManager.Lobby;
-using Microsoft.AspNetCore.SignalR;
 using Microsoft.EntityFrameworkCore;
 using Models.DefaultModels;
 
