@@ -98,10 +98,10 @@ public class AuthService : IAuthService
     {
         Dictionary<string, bool> check = new Dictionary<string, bool>
         {
-            { "Пароль не может быть меньше 8 символов", password.Length >= 8 },
-            { "В пароле должна быть хотя бы одна заглавная буква", password.Any(char.IsUpper) },
-            { "В пароле должна быть хотя бы одна маленькая буква", password.Any(char.IsLower) },
-            { "В пароле должна быть хотя бы одна цифра", password.Any(char.IsDigit) }
+            { "Пароль не может быть меньше 8 символов.", password.Length >= 8 },
+            { "В пароле должна быть хотя бы одна заглавная буква.", password.Any(char.IsUpper) },
+            { "В пароле должна быть хотя бы одна маленькая буква.", password.Any(char.IsLower) },
+            { "В пароле должна быть хотя бы одна цифра.", password.Any(char.IsDigit) }
         };
 
         if (check.ContainsValue(false))
