@@ -25,6 +25,7 @@
     <ItemGroup>
       <Folder Include="Areas\Lobby\Views\" />
       <Folder Include="Areas\MainPage\Views\" />
+      <Folder Include="User\" />
     </ItemGroup>
 
 </Project>
