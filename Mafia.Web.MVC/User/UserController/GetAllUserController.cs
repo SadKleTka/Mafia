@@ -8,9 +8,9 @@ namespace Mafia.Web.MVC.UserController;
 
 public class GetAllUserController
 {
-    private readonly UserService _userService;
+    private readonly IUserService _userService;
 
-    public GetAllUserController(UserService userService)
+    public GetAllUserController(IUserService userService)
     {
         _userService = userService;
     }

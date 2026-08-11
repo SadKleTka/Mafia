@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Service.Common.UserService;
 
-public class UserService
+public class UserService : IUserService
 {
     private readonly AppDbContext _context;
     public UserService(AppDbContext context)
