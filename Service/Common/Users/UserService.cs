@@ -3,7 +3,7 @@ using DomainModel.Models.Entity;
 using Microsoft.EntityFrameworkCore;
 
 
-namespace Service.Common.UserService;
+namespace Service.Common.Users;
 
 public class UserService : IUserService
 {
