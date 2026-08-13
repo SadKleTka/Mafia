@@ -8,7 +8,7 @@ namespace Mafia.Web.MVC.Auth;
 /// Контроллер для работы с пользователем
 /// </summary>
 [ApiController]
-[Route("[controller]")]
+[Route("api/[controller]")]
 public class AuthController : MafiaOnlineController
 {
     private readonly IAuthService _service;

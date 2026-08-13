@@ -33,6 +33,7 @@ app.MapControllerRoute(
 app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Home}/{action=Index}/{id?}");
+
 app.MapHub<MafiaHub>("/hub/lobby");
 app.UseMiddleware<ExceptionHandler>();
 app.MapControllers();
