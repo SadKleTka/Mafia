@@ -13,7 +13,6 @@ builder.Services.AddSwaggerGen();
 
 builder.Services.AddTheSystem(builder.Configuration);
 
-
 var app = builder.Build();
 
 if (app.Environment.IsDevelopment())
