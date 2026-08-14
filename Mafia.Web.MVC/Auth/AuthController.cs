@@ -17,7 +17,6 @@ public class AuthController : MafiaOnlineController
     {
         _service = service;
     }
-
     /// <summary>
     /// Регистрация нового пользователя
     /// </summary>
@@ -32,7 +31,6 @@ public class AuthController : MafiaOnlineController
         _logger.Log(result.Message, result.State);
         return JsonContent(new { state = result.IsOK, message = result.Message, serviceResponse = result.MessageCode });
     }
-
     /// <summary>
     /// Аутентификация
     /// </summary>
