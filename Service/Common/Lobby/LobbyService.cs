@@ -3,6 +3,7 @@ using Enum.Enums;
 using Manager.ServiceManager.Lobby;
 using Microsoft.EntityFrameworkCore;
 using Models.DefaultModels;
+using LobbyEntity = DomainModel.Models.Entity.Lobby;
 
 namespace Service.Common.Lobby;
 
@@ -77,5 +78,11 @@ public class LobbyService : ILobbyService
     public IReadOnlyDictionary<string, List<string>> GetCachedUsers()
     {
         return _cache.GetCachedUsers();
+    }
+
+    public async Task<List<LobbyEntity>> GetAllLobbies()
+    {
+        var getLobbies = await _context.Lobbies.AsNoTracking().ToListAsync();
+        return getLobbies;
     }
 }
