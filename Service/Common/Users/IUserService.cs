@@ -5,4 +5,5 @@ namespace Service.Common.Users;
 public interface IUserService
 {
     Task<IEnumerable<User>> GetAllUsers();
+    Task<IEnumerable<User>> GetUsersByName(string name);
 }

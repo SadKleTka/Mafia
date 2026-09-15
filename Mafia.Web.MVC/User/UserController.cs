@@ -18,7 +18,7 @@ public class UserController : MafiaOnlineController
     }
     
     [HttpGet]
-    [Route("getUsers")]
+    [Route("getAllUsers")]
     public async Task<ActionResult> GetAllUsers()
     {
         var allUsers = await _userService.GetAllUsers();
@@ -52,6 +52,40 @@ public class UserController : MafiaOnlineController
         {
             state = true,
             message = "Список пользователей получен",
+            users = response
+        });
+    }
+    
+    [HttpGet]
+    [Route("getUsersByName")]
+    public async Task<ActionResult> GetUsersByName(string name)
+    {
+        var foundUsersByName = await _userService.GetUsersByName(name);
+        if (!foundUsersByName.Any())
+        {
+            _logger.Log("Пользователи с таким именем не найдены", ExecuteState.OK);
+           
+            return JsonContent(new
+            {
+                state = true,
+                message = "Пользователи с таким именем не найдены",
+            });
+        }
+        var response = foundUsersByName.Select(u => new UsersResponse
+        {
+            UserId = u.UserId,
+            Username = u.Username,
+            Role = u.Role,
+            Wins = u.Wins,
+            Losses = u.Losses,
+            Winrate = u.Winrate,
+            AvatarUrl = u.AvatarUrl,
+        });
+        _logger.Log("Список пользователей по имени получен", ExecuteState.OK);
+        return JsonContent(new
+        {
+            state = true,
+            message = "Список пользователей по имени получен",
             users = response
         });
     }
