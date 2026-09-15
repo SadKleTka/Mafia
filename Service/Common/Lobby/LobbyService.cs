@@ -80,9 +80,11 @@ public class LobbyService : ILobbyService
         return _cache.GetCachedUsers();
     }
 
-    public async Task<List<LobbyEntity>> GetAllLobbies()
+    public async Task<List<string>> GetAllLobbies()
     {
-        var getLobbies = await _context.Lobbies.AsNoTracking().ToListAsync();
+        var getLobbies = GetCachedUsers().Keys.ToList();
+        if (!getLobbies.Any())
+            getLobbies = await _context.Lobbies.Select(x => x.Name).ToListAsync();
         return getLobbies;
     }
 }

@@ -19,23 +19,13 @@ public class LobbyControllers : MafiaOnlineController
     [HttpGet]
     public async Task<ActionResult> GetAllLobbies()
     {
-       
         var allLobbies = await _lobbyService.GetAllLobbies();
-        if (!allLobbies.Any())
-        {
-            _logger.Log("Лобби отсутствуют", ExecuteState.OK);
-            return JsonContent(new
-            {
-                state = true,
-                message = "Лобби отсутствуют",
-                lobbies =  allLobbies
-            });
-        }
-        _logger.Log( "Лобби найдены", ExecuteState.OK);
+        
+        _logger.Log( "Вызван сервис по получению всех лобби", ExecuteState.OK);
         return JsonContent(new
         {
             state = true,
-            message = "Лобби найдены",
+            message = "Лобби выведены",
             lobbies = allLobbies
         });
     }

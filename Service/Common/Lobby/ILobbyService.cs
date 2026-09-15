@@ -10,5 +10,5 @@ public interface ILobbyService
     Task<ExecuteResult> LeaveLobby(string lobbyName, string connectionId, string userId);
     IReadOnlyDictionary<string, List<string>> GetCachedUsers();
     
-    Task<List<LobbyEntity>> GetAllLobbies();
+    Task<List<string>> GetAllLobbies();
 }
