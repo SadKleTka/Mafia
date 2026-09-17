@@ -5,6 +5,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Security.Authentication;
 using Service.Common.Auth;
 using Service.Common.Lobby;
+using Service.Common.ServiceInjector.Game;
 
 namespace Service.Common.ServiceInjector;
 
@@ -26,6 +27,7 @@ public static class ServiceInjector
         
         services.AddScoped<IAuthService, AuthService>();
         services.AddScoped<ILobbyService, LobbyService>();
+        services.AddScoped<IGameService, GameService>();
         
         return services;
     }

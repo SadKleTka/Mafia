@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.SignalR;
 using Models.DefaultModels;
 using Service.Common.Lobby;
+using Service.Common.ServiceInjector.Game;
 
 namespace Mafia.Web.MVC.GameHub;
 
@@ -14,13 +15,14 @@ namespace Mafia.Web.MVC.GameHub;
 [Authorize]
 public class MafiaHub : Hub
 {
-    private readonly ConcurrentDictionary<string, GameEngine> _activeGames = new();
     private readonly ILobbyService _lobby;
+    private readonly IGameService _game;
     private readonly AppLogger _logger;
     
-    public MafiaHub(ILobbyService lobby, ILoggerFactory loggerFactory)
+    public MafiaHub(ILobbyService lobby, IGameService game, ILoggerFactory loggerFactory)
     {
         _lobby = lobby;
+        _game = game;
         var baseLogger = loggerFactory.CreateLogger(GetType());
         _logger = new AppLogger(baseLogger);
     }
@@ -33,25 +35,13 @@ public class MafiaHub : Hub
     public ExecuteResult CreateGame(string lobbyName)
     {
         var userId = Context.UserIdentifier;
-        
-        if (_activeGames.ContainsKey(lobbyName))
-            return new ExecuteResult
-                { State = ExecuteState.Error, Message = "Данная игра уже запущена", MessageCode = "404" };
 
-        var result = _lobby.CheckIfCanCreateGame(lobbyName, userId);
-        
-        if (result.IsError)
+        var can = _lobby.CheckIfCanCreateGame(lobbyName, userId);
+        if (can.IsError)
             return new ExecuteResult
-                { State = result.State, Message = result.Message, MessageCode = result.MessageCode };
+                { State = can.State, Message = can.Message, MessageCode = can.MessageCode };
         
-        if (_activeGames.TryAdd(lobbyName, _lobby.CreateGameEngine()))
-        {
-            return new ExecuteResult
-                { State = ExecuteState.OK, Message = "Игра успешно создана", MessageCode = "200" };
-        }
-        
-        return new ExecuteResult
-            { State = ExecuteState.Error, Message = "Не удалось запустить игру, попробуйте снова", MessageCode = "409" };
+        return _game.CreateGame(lobbyName, userId);
     }
 
     /// <summary>
@@ -63,10 +53,6 @@ public class MafiaHub : Hub
     {
         var connectionId = Context.ConnectionId;
         var userId = Context.UserIdentifier;
-        
-        if (_activeGames.ContainsKey(lobbyName))
-            return new ExecuteResult
-                { State = ExecuteState.Error, Message = "Данная игра уже запущена", MessageCode = "404" };
         
         var result = await _lobby.JoinLobby(lobbyName, connectionId, userId);
 
