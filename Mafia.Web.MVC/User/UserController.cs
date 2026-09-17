@@ -1,8 +1,6 @@
-﻿using DomainModel.Models.Model.User;
-using Enum.Enums;
+﻿using Enum.Enums;
 using Microsoft.AspNetCore.Mvc;
 using Service.Common.Users;
-using DomainModel.Models.Model.User;
 
 namespace Mafia.Web.MVC.UserController;
 
@@ -22,71 +20,28 @@ public class UserController : MafiaOnlineController
     public async Task<ActionResult> GetAllUsers()
     {
         var allUsers = await _userService.GetAllUsers();
-       
-        
-        if (!allUsers.Any())
-        {
-            _logger.Log("Пользователи не найдены", ExecuteState.OK);
-           
-            return JsonContent(new
-            {
-                state = true,
-                message = "Пользователи отсутствуют",
-            });
-        }
-       
-        var response = allUsers.Select(u => new UsersResponse
-        {
-            UserId = u.UserId,
-            Username = u.Username,
-            Role = u.Role,
-            Wins = u.Wins,
-            Losses = u.Losses,
-            Winrate = u.Winrate,
-            AvatarUrl = u.AvatarUrl,
-        });
-        
         _logger.Log("Список пользователей получен", ExecuteState.OK);
         
         return JsonContent(new
         {
             state = true,
-            message = "Список пользователей получен",
-            users = response
+            message = allUsers.Message,
+            users = allUsers.User
         });
     }
     
     [HttpGet]
-    [Route("getUsersByName")]
-    public async Task<ActionResult> GetUsersByName(string name)
+    [Route("searchUsersByName")]
+    public async Task<ActionResult> SearchUsersByName(string name)
     {
-        var foundUsersByName = await _userService.GetUsersByName(name);
-        if (!foundUsersByName.Any())
-        {
-            _logger.Log("Пользователи с таким именем не найдены", ExecuteState.OK);
-           
-            return JsonContent(new
-            {
-                state = true,
-                message = "Пользователи с таким именем не найдены",
-            });
-        }
-        var response = foundUsersByName.Select(u => new UsersResponse
-        {
-            UserId = u.UserId,
-            Username = u.Username,
-            Role = u.Role,
-            Wins = u.Wins,
-            Losses = u.Losses,
-            Winrate = u.Winrate,
-            AvatarUrl = u.AvatarUrl,
-        });
-        _logger.Log("Список пользователей по имени получен", ExecuteState.OK);
-        return JsonContent(new
-        {
-            state = true,
-            message = "Список пользователей по имени получен",
-            users = response
-        });
+       var searchedUsers = await _userService.SearchUsersByName(name);
+       _logger.Log("Список пользователей по имени получен", ExecuteState.OK);
+        
+       return JsonContent(new
+       {
+           state = true,
+           message = searchedUsers.Message,
+           users = searchedUsers.User
+       });
     }
 }
