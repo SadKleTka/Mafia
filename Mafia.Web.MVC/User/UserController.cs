@@ -8,7 +8,7 @@ namespace Mafia.Web.MVC.UserController;
 /// Контроллер для получения пользователей
 /// </summary>
 [ApiController]
-[Route("[controller]")] 
+[Route("api/[controller]")] 
 public class UserController : MafiaOnlineController
 {
     private readonly IUserService _userService;
