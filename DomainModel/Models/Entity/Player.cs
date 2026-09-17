@@ -11,7 +11,10 @@ public class Player
     [Key]
     public string Nickname { get; set; }
     
-    public Guid PlayerId { get; set; }
+    public string AvatarUrl { get; set; }
+    
+    [Display(Name = "Процент побед")]
+    public float Winrate { get; set; }
     
     public GameRole Role { get; set; }
 }
