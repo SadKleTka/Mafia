@@ -8,7 +8,7 @@ namespace Mafia.Web.MVC.Lobby;
 /// Контроллер для получения списка лобби
 /// </summary>
 [ApiController]
-[Route("[controller]")]
+[Route("api/[controller]")]
 public class LobbyControllers : MafiaOnlineController
 {
 
