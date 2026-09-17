@@ -1,6 +1,9 @@
 ﻿using DataManager.DataContract;
 using DomainModel.Models.Entity;
+using DomainModel.Models.Model.User;
+using Enum.Enums;
 using Microsoft.EntityFrameworkCore;
+using Models.DefaultModels.User;
 
 
 namespace Service.Common.Users;
@@ -13,16 +16,70 @@ public class UserService : IUserService
         _context = context;
     }
 
-    public async Task<IEnumerable<User>> GetAllUsers()
+    public async Task<UserExecuteResult> GetAllUsers()
     {
         var users = await _context.Users.AsNoTracking().ToListAsync();
-       
-        return users;
+        var response = users.Select(u => new UsersResponse
+        {
+            UserId = u.UserId,
+            Username = u.Username,
+            Role = u.Role,
+            Wins = u.Wins,
+            Losses = u.Losses,
+            Winrate = u.Winrate,
+            AvatarUrl = u.AvatarUrl,
+        });
+        if(!users.Any())
+        {
+            return new UserExecuteResult
+            {
+                MessageCode = "200",
+                Message = "Пользователи не найдены",
+                State = ExecuteState.OK,
+                User = response
+            };
+        }
+        
+        return new UserExecuteResult
+        {
+            MessageCode = "200",
+            Message = "Список пользователей получен",
+            State = ExecuteState.OK,
+            User = response
+        };
+
     }
 
-    public async Task<IEnumerable<User>> GetUsersByName(string name)
+    public async Task<UserExecuteResult> SearchUsersByName(string name)
     {
-        var foundUsers = await _context.Users.AsNoTracking().Where(u => u.Username == name).ToListAsync();
-        return foundUsers;
+        var foundUsers = await _context.Users.AsNoTracking().Where(u => u.Username.ToLower().Contains(name.ToLower())).OrderBy(u => u.Username.Length).ToListAsync();
+        var response = foundUsers.Select(u => new UsersResponse
+        {
+            UserId = u.UserId,
+            Username = u.Username,
+            Role = u.Role,
+            Wins = u.Wins,
+            Losses = u.Losses,
+            Winrate = u.Winrate,
+            AvatarUrl = u.AvatarUrl,
+        });
+            if(!foundUsers.Any())
+            {
+                return new UserExecuteResult
+                {
+                    MessageCode = "200",
+                    Message = "Пользователи с таким именем не найдены",
+                    State = ExecuteState.OK,
+                    User = response
+                };
+            }
+        
+        return new UserExecuteResult
+        {
+            MessageCode = "200",
+            Message = "Список пользователей по имени получен",
+            State = ExecuteState.OK,
+            User = response
+        };
     }
 }
