@@ -2,6 +2,9 @@
 
 namespace Models.DefaultModels.User;
 
+/// <summary>
+/// Результат выполнения команды с возвращаемым списком пользователей
+/// </summary>
 public class UserExecuteResult : ExecuteResult
 {
     public UserExecuteResult (IEnumerable<UsersResponse> user)
