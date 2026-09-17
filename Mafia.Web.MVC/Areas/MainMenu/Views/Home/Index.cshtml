@@ -1,22 +1,354 @@
 @{
     ViewData["Title"] = "Мафия онлайн";
+    Layout = null;
 }
-
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Мафия онлайн</title>
+    <title>@ViewData["Title"]</title>
     <link rel="stylesheet" href="~/css/main-menu.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/microsoft-signalr/8.0.0/signalr.min.js"></script>
 </head>
 <body>
 <div class="page">
+    <!-- Header -->
     <header class="header">
-        <div class="logo">
-            Мафия онлайн
+        <div class="logo">Мафия онлайн</div>
+        <div class="header-right">
+            <div class="user-label">Игрок: <span id="user-email">—</span></div>
+            <button class="btn btn-ghost btn-sm" onclick="logout()">Выйти</button>
         </div>
     </header>
+
+    <div class="main-content">
+        <!-- Status bar (spans full width, row 1) -->
+        <div class="status-bar">
+            <div id="status-dot" class="status-dot connecting"></div>
+            <span id="status-text">Подключение к серверу...</span>
+        </div>
+
+        <!-- Sidebar (row 2, col 1) -->
+        <aside class="sidebar">
+            <!-- Create / join lobby -->
+            <div class="panel">
+                <h3>Создать / Войти в лобби</h3>
+                <div class="input-row">
+                    <input id="lobby-name-input" class="input" type="text" placeholder="Название лобби" maxlength="40">
+                    <button id="join-btn" class="btn btn-primary" onclick="joinLobby()" disabled>Войти</button>
+                </div>
+                <div id="join-alert" class="alert" style="margin-top:10px;"></div>
+            </div>
+
+            <!-- Current user's lobby -->
+            <div class="panel" id="current-lobby-panel" style="display:none;">
+                <h3>Вы в лобби</h3>
+                <div style="display:flex; align-items:center; justify-content:space-between; gap:8px;">
+                    <span id="current-lobby-name" style="font-weight:600; color:var(--accent);"></span>
+                    <div style="display:flex; gap:6px;">
+                        <button class="btn btn-primary btn-sm" onclick="createGame()">Начать игру</button>
+                        <button class="btn btn-danger btn-sm" onclick="leaveLobby()">Выйти</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Refresh control -->
+            <div class="panel" style="border-bottom:none;">
+                <h3>Обновление списка</h3>
+                <div style="display:flex; align-items:center; gap:10px;">
+                    <button class="btn btn-ghost btn-sm" onclick="refreshLobbies()">Обновить сейчас</button>
+                    <span style="font-size:12px; color:var(--muted);">Авто каждые 5 с</span>
+                </div>
+            </div>
+        </aside>
+
+        <!-- Main area (row 2, col 2) -->
+        <div class="main-area">
+            <div class="lobbies-header">
+                <h3>Активные лобби</h3>
+                <span id="lobby-count" class="lobbies-count">0</span>
+            </div>
+            <div id="lobbies-grid" class="lobbies-grid">
+                <div class="empty-state">
+                    Нет активных лобби.<br>Создайте первое!
+                </div>
+            </div>
+        </div>
+
+        <!-- Log (row 3, spans full width) -->
+        <div class="log-section">
+            <div class="log-header">
+                <span>Журнал событий</span>
+                <button class="log-clear" onclick="clearLog()">Очистить</button>
+            </div>
+            <div id="log-body" class="log-body"></div>
+        </div>
+    </div>
 </div>
+
+<script>
+// ── Helpers ──────────────────────────────────────────────────────
+
+function getToken() {
+    return localStorage.getItem('jwt');
+}
+
+function parseJwt(token) {
+    try {
+        const base64 = token.split('.')[1].replace(/-/g, '+').replace(/_/g, '/');
+        return JSON.parse(atob(base64));
+    } catch { return {}; }
+}
+
+function logout() {
+    localStorage.removeItem('jwt');
+    window.location.href = '/AuthLogin/Home/Index';
+}
+
+function now() {
+    return new Date().toLocaleTimeString('ru-RU', { hour: '2-digit', minute: '2-digit', second: '2-digit' });
+}
+
+// ── Log ──────────────────────────────────────────────────────────
+
+function addLog(state, message) {
+    const body = document.getElementById('log-body');
+    const entry = document.createElement('div');
+    entry.className = 'log-entry';
+
+    const stateKey  = typeof state === 'number' ? ['ok','error','created','deleted'][state] || 'info' : String(state).toLowerCase();
+    const badgeClass = 'badge-' + stateKey;
+    const label     = stateKey.toUpperCase();
+
+    entry.innerHTML =
+        `<span class="log-time">${now()}</span>` +
+        `<span class="log-badge ${badgeClass}">${label}</span>` +
+        `<span class="log-msg">${escHtml(message || '')}</span>`;
+
+    body.prepend(entry);
+}
+
+function addInfoLog(message) {
+    const body = document.getElementById('log-body');
+    const entry = document.createElement('div');
+    entry.className = 'log-entry';
+    entry.innerHTML =
+        `<span class="log-time">${now()}</span>` +
+        `<span class="log-badge badge-info">INFO</span>` +
+        `<span class="log-msg">${escHtml(message)}</span>`;
+    body.prepend(entry);
+}
+
+function clearLog() {
+    document.getElementById('log-body').innerHTML = '';
+}
+
+function escHtml(str) {
+    const d = document.createElement('div');
+    d.appendChild(document.createTextNode(str));
+    return d.innerHTML;
+}
+
+// ── Status bar ───────────────────────────────────────────────────
+
+function setStatus(state, text) {
+    const dot  = document.getElementById('status-dot');
+    const span = document.getElementById('status-text');
+    dot.className = 'status-dot ' + state;
+    span.textContent = text;
+}
+
+// ── Lobby UI ─────────────────────────────────────────────────────
+
+let currentLobby = null;
+
+function setCurrentLobby(name) {
+    currentLobby = name;
+    const panel = document.getElementById('current-lobby-panel');
+    if (name) {
+        document.getElementById('current-lobby-name').textContent = name;
+        panel.style.display = '';
+    } else {
+        panel.style.display = 'none';
+    }
+}
+
+function renderLobbies(lobbies) {
+    const grid   = document.getElementById('lobbies-grid');
+    const count  = document.getElementById('lobby-count');
+    const names  = Object.keys(lobbies);
+    count.textContent = names.length;
+
+    if (names.length === 0) {
+        grid.innerHTML = '<div class="empty-state">Нет активных лобби.<br>Создайте первое!</div>';
+        return;
+    }
+
+    grid.innerHTML = names.map(name => {
+        const players = lobbies[name];
+        const n = Array.isArray(players) ? players.length : 0;
+        const inThis = currentLobby === name;
+        return `
+        <div class="lobby-card" id="lobby-${escAttr(name)}">
+            <div class="lobby-info">
+                <div class="lobby-name">${escHtml(name)}</div>
+                <div class="lobby-players">${n} игрок${n === 1 ? '' : n >= 2 && n <= 4 ? 'а' : 'ов'}</div>
+            </div>
+            <div class="lobby-actions">
+                ${inThis
+                    ? `<button class="btn btn-primary btn-sm" onclick="createGame()" title="Начать игру">▶ Старт</button>
+                       <button class="btn btn-danger btn-sm"  onclick="leaveLobby()">Выйти</button>`
+                    : `<button class="btn btn-ghost btn-sm"   onclick="joinLobbyByName('${escAttr(name)}')">Войти</button>`
+                }
+            </div>
+        </div>`;
+    }).join('');
+}
+
+function escAttr(str) {
+    return str.replace(/'/g, "\\'").replace(/"/g, '&quot;');
+}
+
+// ── SignalR ──────────────────────────────────────────────────────
+
+let connection = null;
+let pollTimer  = null;
+
+function buildConnection(token) {
+    return new signalR.HubConnectionBuilder()
+        .withUrl('/hub/lobby', { accessTokenFactory: () => token })
+        .withAutomaticReconnect([1000, 2000, 5000, 10000])
+        .configureLogging(signalR.LogLevel.Warning)
+        .build();
+}
+
+async function startConnection() {
+    const token = getToken();
+    if (!token) { logout(); return; }
+
+    connection = buildConnection(token);
+
+    connection.onreconnecting(() => {
+        setStatus('connecting', 'Переподключение...');
+        stopPoll();
+        addInfoLog('Переподключение к серверу...');
+    });
+
+    connection.onreconnected(() => {
+        setStatus('connected', 'Подключено');
+        addInfoLog('Соединение восстановлено.');
+        startPoll();
+    });
+
+    connection.onclose(() => {
+        setStatus('error', 'Отключено');
+        stopPoll();
+        addInfoLog('Соединение закрыто.');
+    });
+
+    try {
+        await connection.start();
+        setStatus('connected', 'Подключено к серверу');
+        document.getElementById('join-btn').disabled = false;
+        addInfoLog('Соединение установлено.');
+        await refreshLobbies();
+        startPoll();
+    } catch (err) {
+        setStatus('error', 'Ошибка подключения: ' + err.message);
+        addInfoLog('Ошибка подключения: ' + err.message);
+    }
+}
+
+function startPoll() {
+    stopPoll();
+    pollTimer = setInterval(refreshLobbies, 5000);
+}
+
+function stopPoll() {
+    if (pollTimer) { clearInterval(pollTimer); pollTimer = null; }
+}
+
+async function refreshLobbies() {
+    if (!connection || connection.state !== signalR.HubConnectionState.Connected) return;
+    try {
+        const lobbies = await connection.invoke('GetActiveLobbies');
+        renderLobbies(lobbies || {});
+    } catch (err) {
+        addInfoLog('Ошибка получения лобби: ' + err.message);
+    }
+}
+
+// ── Actions ──────────────────────────────────────────────────────
+
+async function joinLobby() {
+    const name = document.getElementById('lobby-name-input').value.trim();
+    if (!name) return;
+    await joinLobbyByName(name);
+}
+
+async function joinLobbyByName(name) {
+    if (!connection || connection.state !== signalR.HubConnectionState.Connected) {
+        addInfoLog('Нет соединения с сервером.');
+        return;
+    }
+    try {
+        const result = await connection.invoke('JoinLobby', name);
+        addLog(result.state, result.message || '');
+        if (!isError(result)) {
+            setCurrentLobby(name);
+            document.getElementById('lobby-name-input').value = '';
+        }
+        await refreshLobbies();
+    } catch (err) {
+        addInfoLog('Ошибка JoinLobby: ' + err.message);
+    }
+}
+
+async function leaveLobby() {
+    if (!currentLobby || !connection || connection.state !== signalR.HubConnectionState.Connected) return;
+    try {
+        const name   = currentLobby;
+        const result = await connection.invoke('LeaveLobby', name);
+        addLog(result.state, result.message || '');
+        if (!isError(result)) {
+            setCurrentLobby(null);
+        }
+        await refreshLobbies();
+    } catch (err) {
+        addInfoLog('Ошибка LeaveLobby: ' + err.message);
+    }
+}
+
+async function createGame() {
+    if (!currentLobby || !connection || connection.state !== signalR.HubConnectionState.Connected) return;
+    try {
+        const result = await connection.invoke('CreateGame', currentLobby);
+        addLog(result.state, result.message || '');
+    } catch (err) {
+        addInfoLog('Ошибка CreateGame: ' + err.message);
+    }
+}
+
+function isError(result) {
+    return result.state === 1 || String(result.state).toLowerCase() === 'error';
+}
+
+// ── Init ─────────────────────────────────────────────────────────
+
+(function init() {
+    const token = getToken();
+    if (!token) { window.location.href = '/AuthLogin/Home/Index'; return; }
+
+    const payload = parseJwt(token);
+    const email   = payload['http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress']
+                 || payload['email']
+                 || payload['sub']
+                 || '—';
+    document.getElementById('user-email').textContent = email;
+
+    startConnection();
+})();
+</script>
 </body>
 </html>

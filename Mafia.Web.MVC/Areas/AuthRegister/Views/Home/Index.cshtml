@@ -1,0 +1,98 @@
+@{
+    ViewData["Title"] = "Регистрация — Мафия онлайн";
+    Layout = null;
+}
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewData["Title"]</title>
+    <link rel="stylesheet" href="~/css/main-menu.css">
+</head>
+<body>
+<div class="auth-page">
+    <div class="auth-logo">Мафия онлайн</div>
+
+    <div class="auth-card">
+        <h2>Создать аккаунт</h2>
+
+        <div class="field">
+            <label for="username">Имя пользователя</label>
+            <input id="username" class="input" type="text" placeholder="username" autocomplete="username">
+        </div>
+
+        <div class="field">
+            <label for="email">Email</label>
+            <input id="email" class="input" type="email" placeholder="you@example.com" autocomplete="email">
+        </div>
+
+        <div class="field">
+            <label for="password">Пароль</label>
+            <input id="password" class="input" type="password" placeholder="мин. 8 символов" autocomplete="new-password">
+            <div style="margin-top:6px; font-size:11px; color:var(--muted);">
+                Минимум 8 символов, заглавная буква, строчная буква, цифра.
+            </div>
+        </div>
+
+        <button id="submit-btn" class="btn btn-primary btn-full" onclick="doRegister()">Зарегистрироваться</button>
+
+        <div id="alert" class="alert"></div>
+    </div>
+
+    <div class="auth-footer">
+        Уже есть аккаунт? <a href="/AuthLogin/Home/Index">Войти</a>
+    </div>
+</div>
+
+<script>
+    function showAlert(msg, type) {
+        const el = document.getElementById('alert');
+        el.textContent = msg;
+        el.className = 'alert alert-' + type + ' show';
+    }
+
+    async function doRegister() {
+        const username = document.getElementById('username').value.trim();
+        const email    = document.getElementById('email').value.trim();
+        const password = document.getElementById('password').value;
+        const btn      = document.getElementById('submit-btn');
+
+        if (!username || !email || !password) {
+            showAlert('Заполните все поля.', 'error');
+            return;
+        }
+
+        btn.disabled = true;
+        btn.textContent = 'Регистрация...';
+
+        try {
+            const res = await fetch('/api/auth/register', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ username, email, password })
+            });
+
+            const data = await res.json();
+
+            if (data.state === true) {
+                showAlert('Аккаунт создан! Перенаправляем...', 'success');
+                setTimeout(() => { window.location.href = '/AuthLogin/Home/Index'; }, 1200);
+            } else {
+                showAlert(data.message || 'Ошибка регистрации.', 'error');
+                btn.disabled = false;
+                btn.textContent = 'Зарегистрироваться';
+            }
+        } catch (err) {
+            showAlert('Ошибка сети. Проверьте соединение.', 'error');
+            btn.disabled = false;
+            btn.textContent = 'Зарегистрироваться';
+        }
+    }
+
+    document.addEventListener('keydown', e => {
+        if (e.key === 'Enter') doRegister();
+    });
+</script>
+</body>
+</html>
