@@ -1,6 +1,8 @@
 ﻿using DataManager.DataContract;
 using Enum.Enums;
+using Manager.ServiceManager.Game.GameEngine;
 using Manager.ServiceManager.Lobby;
+using Manager.ServiceManager.States.GameDay;
 using Microsoft.EntityFrameworkCore;
 using Models.DefaultModels;
 
@@ -19,6 +21,25 @@ public class LobbyService : ILobbyService
         _cache = cache;
         _context = context;
     }
+
+    public ExecuteResult CheckIfCanCreateGame(string lobbyName, string userId)
+    {
+        var lobbyes = GetCachedUsers();
+
+        if (lobbyes.ContainsKey(lobbyName))
+            return new ExecuteResult {State = ExecuteState.Error, Message = "Данного лобби не существует", MessageCode = "404"};
+
+        if (lobbyes.Any(u => u.Value.Contains(userId) && u.Key == lobbyName))
+            return new ExecuteResult {State = ExecuteState.Error, Message = "Вы не можете запустить игру не находясь в лобби", MessageCode = "404"};
+        
+        return new ExecuteResult {State = ExecuteState.OK, Message = "Можно создать игру", MessageCode = "200"};
+    }
+
+    public GameEngine CreateGameEngine()
+    {
+        return new GameEngine(_cache, new GameDay());
+    }
+    
     /// <summary>
     /// Присоединиться к лобби
     /// </summary>
