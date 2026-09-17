@@ -80,6 +80,10 @@ public class LobbyService : ILobbyService
         return _cache.GetCachedUsers();
     }
 
+    /// <summary>
+    /// Получение всех лобби
+    /// </summary>
+    /// <returns></returns>
     public async Task<List<string>> GetAllLobbies()
     {
         var getLobbies = GetCachedUsers().Keys.ToList();

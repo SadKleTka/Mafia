@@ -4,6 +4,9 @@ using Service.Common.Lobby;
 
 namespace Mafia.Web.MVC.Lobby;
 
+/// <summary>
+/// Контроллер для получения списка лобби
+/// </summary>
 [ApiController]
 [Route("[controller]")]
 public class LobbyControllers : MafiaOnlineController
