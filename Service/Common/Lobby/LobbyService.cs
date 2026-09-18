@@ -6,6 +6,7 @@ using Manager.ServiceManager.Lobby;
 using Manager.ServiceManager.States.GameDay;
 using Microsoft.EntityFrameworkCore;
 using Models.DefaultModels;
+using LobbyEntity = DomainModel.Models.Entity.Lobby;
 
 namespace Service.Common.Lobby;
 
@@ -100,5 +101,17 @@ public class LobbyService : ILobbyService
     public IReadOnlyDictionary<string, List<string>> GetCachedUsers()
     {
         return _cache.GetCachedUsers();
+    }
+
+    /// <summary>
+    /// Получение всех лобби
+    /// </summary>
+    /// <returns></returns>
+    public async Task<List<string>> GetAllLobbies()
+    {
+        var getLobbies = GetCachedUsers().Keys.ToList();
+        if (!getLobbies.Any())
+            getLobbies = await _context.Lobbies.Select(x => x.Name).ToListAsync();
+        return getLobbies;
     }
 }
