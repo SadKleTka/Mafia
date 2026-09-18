@@ -1,13 +1,14 @@
-﻿using DomainModel.Models.Model.User;
-using Enum.Enums;
+﻿using Enum.Enums;
 using Microsoft.AspNetCore.Mvc;
 using Service.Common.Users;
-using DomainModel.Models.Model.User;
 
 namespace Mafia.Web.MVC.UserController;
 
+/// <summary>
+/// Контроллер для получения пользователей
+/// </summary>
 [ApiController]
-[Route("[controller]")] 
+[Route("api/[controller]")] 
 public class UserController : MafiaOnlineController
 {
     private readonly IUserService _userService;
@@ -16,43 +17,42 @@ public class UserController : MafiaOnlineController
     {
         _userService = userService;
     }
-    
+    /// <summary>
+    /// Получение всех пользователей
+    /// </summary>
+    /// <returns></returns>Список всех пользователей
     [HttpGet]
-    [Route("getUsers")]
+    [Route("getAllUsers")]
     public async Task<ActionResult> GetAllUsers()
     {
         var allUsers = await _userService.GetAllUsers();
-       
-        
-        if (!allUsers.Any())
-        {
-            _logger.Log("Пользователи не найдены", ExecuteState.OK);
-           
-            return JsonContent(new
-            {
-                state = true,
-                message = "Пользователи отсутствуют",
-            });
-        }
-       
-        var response = allUsers.Select(u => new UsersResponse
-        {
-            UserId = u.UserId,
-            Username = u.Username,
-            Role = u.Role,
-            Wins = u.Wins,
-            Losses = u.Losses,
-            Winrate = u.Winrate,
-            AvatarUrl = u.AvatarUrl,
-        });
-        
         _logger.Log("Список пользователей получен", ExecuteState.OK);
         
         return JsonContent(new
         {
             state = true,
-            message = "Список пользователей получен",
-            users = response
+            message = allUsers.Message,
+            users = allUsers.User
         });
+    }
+ 
+    /// <summary>
+    /// Поиск пользоватлей по имени
+    /// </summary>
+    /// <param name="name"></param>Имя пользователя
+    /// <returns></returns>Список пользователей с совпадающим именем
+    [HttpGet]
+    [Route("searchUsersByName")]
+    public async Task<ActionResult> SearchUsersByName(string name)
+    {
+       var searchedUsers = await _userService.SearchUsersByName(name);
+       _logger.Log("Список пользователей по имени получен", ExecuteState.OK);
+        
+       return JsonContent(new
+       {
+           state = true,
+           message = searchedUsers.Message,
+           users = searchedUsers.User
+       });
     }
 }
