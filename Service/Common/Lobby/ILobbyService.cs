@@ -1,3 +1,6 @@
+﻿using Models.DefaultModels;
+using LobbyEntity = DomainModel.Models.Entity.Lobby;
+
 ﻿using Manager.ServiceManager.Game.GameEngine;
 using Microsoft.AspNetCore.SignalR;
 using Models.DefaultModels;
@@ -10,4 +13,6 @@ public interface ILobbyService
     Task<ExecuteResult> LeaveLobby(string lobbyName, string connectionId, string userId);
     ExecuteResult CheckIfCanCreateGame(string lobbyName, string userId);
     IReadOnlyDictionary<string, List<string>> GetCachedUsers();
+    
+    Task<List<string>> GetAllLobbies();
 }
