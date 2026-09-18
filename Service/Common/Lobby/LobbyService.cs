@@ -1,6 +1,9 @@
 ﻿using DataManager.DataContract;
 using Enum.Enums;
+using Manager.ServiceManager.ActiveGame;
+using Manager.ServiceManager.Game.GameEngine;
 using Manager.ServiceManager.Lobby;
+using Manager.ServiceManager.States.GameDay;
 using Microsoft.EntityFrameworkCore;
 using Models.DefaultModels;
 
@@ -12,13 +15,29 @@ namespace Service.Common.Lobby;
 public class LobbyService : ILobbyService
 {
     private readonly LobbyCache _cache;
+    private readonly ActiveGameCache _gameCache;
     private readonly AppDbContext _context;
 
-    public LobbyService(LobbyCache cache, AppDbContext context)
+    public LobbyService(LobbyCache cache, ActiveGameCache gameCache, AppDbContext context)
     {
         _cache = cache;
+        _gameCache = gameCache;
         _context = context;
     }
+
+    public ExecuteResult CheckIfCanCreateGame(string lobbyName, string userId)
+    {
+        var lobbyes = GetCachedUsers();
+
+        if (!lobbyes.ContainsKey(lobbyName))
+            return new ExecuteResult {State = ExecuteState.Error, Message = "Данного лобби не существует", MessageCode = "404"};
+
+        if (!lobbyes.Any(u => u.Value.Contains(userId) && u.Key == lobbyName))
+            return new ExecuteResult {State = ExecuteState.Error, Message = "Вы не можете запустить игру не находясь в лобби", MessageCode = "404"};
+        
+        return new ExecuteResult {State = ExecuteState.OK, Message = "Можно создать игру", MessageCode = "200"};
+    }
+    
     /// <summary>
     /// Присоединиться к лобби
     /// </summary>
@@ -29,6 +48,10 @@ public class LobbyService : ILobbyService
     {
         if (string.IsNullOrEmpty(lobbyName) || string.IsNullOrEmpty(connectionId) || string.IsNullOrEmpty(userId))
             return new ExecuteResult { State = ExecuteState.Error, Message = "Поля не могут быть пустыми", MessageCode = "409" };
+        
+        if (_gameCache.GetActiveGames().ContainsKey(lobbyName))
+            return new ExecuteResult
+                { State = ExecuteState.Error, Message = "Данная игра уже запущена", MessageCode = "404" };
 
         var newLobby = new DomainModel.Models.Entity.Lobby
         {
@@ -61,7 +84,7 @@ public class LobbyService : ILobbyService
             return new ExecuteResult { State = ExecuteState.Error, Message = "Поля не могут быть пустыми", MessageCode = "409" };
         
         var result = _cache.LeaveFromLobby(lobbyName, connectionId, userId);
-        if (!result.IsError)
+        if (result.IsError)
             return result;
 
         if (result.IsDeleted)

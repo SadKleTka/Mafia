@@ -22,9 +22,4 @@
       <ProjectReference Include="..\Service\Common\Common.csproj" />
     </ItemGroup>
 
-    <ItemGroup>
-      <Folder Include="Areas\Lobby\Views\" />
-      <Folder Include="Areas\MainPage\Views\" />
-    </ItemGroup>
-
 </Project>
