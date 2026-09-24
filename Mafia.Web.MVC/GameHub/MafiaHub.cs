@@ -1,7 +1,11 @@
-﻿using Microsoft.AspNetCore.Authorization;
+﻿using System.Collections.Concurrent;
+using Enum.Enums;
+using Manager.ServiceManager.Game.GameEngine;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.SignalR;
 using Models.DefaultModels;
 using Service.Common.Lobby;
+using Service.Common.ServiceInjector.Game;
 
 namespace Mafia.Web.MVC.GameHub;
 
@@ -12,11 +16,13 @@ namespace Mafia.Web.MVC.GameHub;
 public class MafiaHub : Hub
 {
     private readonly ILobbyService _lobby;
+    private readonly IGameService _game;
     private readonly AppLogger _logger;
     
-    public MafiaHub(ILobbyService lobby, ILoggerFactory loggerFactory)
+    public MafiaHub(ILobbyService lobby, IGameService game, ILoggerFactory loggerFactory)
     {
         _lobby = lobby;
+        _game = game;
         var baseLogger = loggerFactory.CreateLogger(GetType());
         _logger = new AppLogger(baseLogger);
     }
@@ -24,6 +30,18 @@ public class MafiaHub : Hub
     public IReadOnlyDictionary<string, List<string>> GetActiveLobbies()
     {
         return _lobby.GetCachedUsers();
+    }
+
+    public ExecuteResult CreateGame(string lobbyName)
+    {
+        var userId = Context.UserIdentifier;
+
+        var can = _lobby.CheckIfCanCreateGame(lobbyName, userId);
+        if (can.IsError)
+            return new ExecuteResult
+                { State = can.State, Message = can.Message, MessageCode = can.MessageCode };
+        
+        return _game.CreateGame(lobbyName, userId);
     }
 
     /// <summary>

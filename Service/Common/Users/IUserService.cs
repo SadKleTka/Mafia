@@ -4,6 +4,9 @@ using Models.DefaultModels.User;
 
 namespace Service.Common.Users;
 
+/// <summary>
+/// Интерфейс для работы с пользователями 
+/// </summary>
 public interface IUserService
 {
     Task<UserExecuteResult> GetAllUsers();

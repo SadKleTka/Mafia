@@ -4,8 +4,11 @@ using Service.Common.Users;
 
 namespace Mafia.Web.MVC.UserController;
 
+/// <summary>
+/// Контроллер для получения пользователей
+/// </summary>
 [ApiController]
-[Route("[controller]")] 
+[Route("api/[controller]")] 
 public class UserController : MafiaOnlineController
 {
     private readonly IUserService _userService;
@@ -14,7 +17,10 @@ public class UserController : MafiaOnlineController
     {
         _userService = userService;
     }
-    
+    /// <summary>
+    /// Получение всех пользователей
+    /// </summary>
+    /// <returns></returns>Список всех пользователей
     [HttpGet]
     [Route("getAllUsers")]
     public async Task<ActionResult> GetAllUsers()
@@ -29,7 +35,12 @@ public class UserController : MafiaOnlineController
             users = allUsers.User
         });
     }
-    
+ 
+    /// <summary>
+    /// Поиск пользоватлей по имени
+    /// </summary>
+    /// <param name="name"></param>Имя пользователя
+    /// <returns></returns>Список пользователей с совпадающим именем
     [HttpGet]
     [Route("searchUsersByName")]
     public async Task<ActionResult> SearchUsersByName(string name)

@@ -8,6 +8,9 @@ using Models.DefaultModels.User;
 
 namespace Service.Common.Users;
 
+/// <summary>
+/// Сервис для работы с пользователями
+/// </summary>
 public class UserService : IUserService
 {
     private readonly AppDbContext _context;
@@ -16,6 +19,10 @@ public class UserService : IUserService
         _context = context;
     }
 
+    /// <summary>
+    /// Поиск пользоватлей по имени
+    /// </summary>
+    /// <returns></returns>Список пользователей 
     public async Task<UserExecuteResult> GetAllUsers()
     {
         var users = await _context.Users.AsNoTracking().ToListAsync();
@@ -50,6 +57,11 @@ public class UserService : IUserService
 
     }
 
+    /// <summary>
+    /// Поиск пользоватлей по имени
+    /// </summary>
+    /// <param name="name"></param>Имя пользователя
+    /// <returns></returns>Список пользователей с совпадающим именем
     public async Task<UserExecuteResult> SearchUsersByName(string name)
     {
         var foundUsers = await _context.Users.AsNoTracking().Where(u => u.Username.ToLower().Contains(name.ToLower())).OrderBy(u => u.Username.Length).ToListAsync();
