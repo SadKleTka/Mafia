@@ -14,6 +14,8 @@ public class AppDbContext : Microsoft.EntityFrameworkCore.DbContext
     public DbSet<User> Users { get; set; }
     
     public DbSet<Lobby> Lobbies { get; set; }
+    
+    public DbSet<Player> Players { get; set; }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
@@ -27,5 +29,12 @@ public class AppDbContext : Microsoft.EntityFrameworkCore.DbContext
         modelBuilder.Entity<Lobby>()
             .HasIndex(e => e.Name)
             .IsUnique();
+        
+        modelBuilder.Entity<Player>()
+            .HasIndex(p => p.Nickname)
+            .IsUnique();
+
+        modelBuilder.Entity<Player>()
+            .HasOne(p => p.User);
     }
 }
