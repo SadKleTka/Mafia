@@ -14,6 +14,8 @@ public class AppDbContext : Microsoft.EntityFrameworkCore.DbContext
     public DbSet<User> Users { get; set; }
     
     public DbSet<Lobby> Lobbies { get; set; }
+    
+    public DbSet<Player> Players { get; set; }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
