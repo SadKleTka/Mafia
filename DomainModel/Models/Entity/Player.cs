@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using Enum.Enums;
 
 namespace DomainModel.Models.Entity;
@@ -8,6 +9,14 @@ namespace DomainModel.Models.Entity;
 /// </summary>
 public class Player
 {
+    public Player(string nickname, Guid userId, string avatarUrl, float winrate)
+    {
+        UserId = userId;
+        Nickname = nickname;
+        AvatarUrl = avatarUrl;
+        Winrate = winrate;
+    }
+    
     [Key]
     public string Nickname { get; set; }
     
@@ -17,4 +26,9 @@ public class Player
     public float Winrate { get; set; }
     
     public GameRole Role { get; set; }
+    
+    public Guid UserId { get; set; }
+    
+    [ForeignKey(nameof(UserId))]
+    public virtual User User { get; set; }
 }

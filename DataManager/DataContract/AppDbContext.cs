@@ -27,5 +27,12 @@ public class AppDbContext : Microsoft.EntityFrameworkCore.DbContext
         modelBuilder.Entity<Lobby>()
             .HasIndex(e => e.Name)
             .IsUnique();
+        
+        modelBuilder.Entity<Player>()
+            .HasIndex(p => p.Nickname)
+            .IsUnique();
+
+        modelBuilder.Entity<Player>()
+            .HasOne(p => p.User);
     }
 }
